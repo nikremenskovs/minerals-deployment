@@ -1,28 +1,31 @@
 <template>
-    <div class="img-container">
-        <div class="background" ref="background"></div>
-        <div class="foreground" ref="foreground"></div>
+    <div class="img-container" ref="imgContainer">
+        <div class="background" ref="background" :style="{ transform: backgroundTransform }"></div>
+        <div class="foreground" ref="foreground" :style="{ transform: foregroundTransform }"></div>
     </div>
 </template>
 
 <script>
+import { useScroll } from '@vueuse/core'
 export default {
-    methods: {
-        handleScroll() {
-            const maxBackgroundSize = 114
-            const backgroundSize = scrollY / (maxBackgroundSize - 100)
-            this.$refs.background.style.transform =
-                `scale3d(${(100 + backgroundSize * 0.4) / 100}, ${(100 + backgroundSize * 0.4) / 100}, 1)`
-            this.$refs.foreground.style.transform =
-                `scale3d(${(100 + backgroundSize) / 100}, ${(100 + backgroundSize) / 100}, 1)`
-            console.log(this.$refs.background.style.transform)
+    setup() {
+        const scroll = useScroll(window)
+
+        return {
+            scrY: scroll.y,
+            maxBackgroundSize: 114,
         }
     },
-    mounted() {
-        window.addEventListener('scroll', this.handleScroll);
-    },
-    unmounted() {
-        window.removeEventListener('scroll', this.handleScroll)
+    computed: {
+        backgroundSize() {
+            return this.scrY / (this.maxBackgroundSize - 100)
+        },
+        backgroundTransform() {
+            return `scale3d(${(100 + this.backgroundSize * 0.4) / 100}, ${(100 + this.backgroundSize * 0.4) / 100}, 1)`
+        },
+        foregroundTransform() {
+            return `scale3d(${(100 + this.backgroundSize) / 100}, ${(100 + this.backgroundSize) / 100}, 1)`
+        }
     }
 }
 </script>
