@@ -9,12 +9,12 @@
 export default {
     methods: {
         handleScroll() {
-            const maxBackgroundSize = 115
+            const maxBackgroundSize = 114
             const backgroundSize = scrollY / (maxBackgroundSize - 100)
             this.$refs.background.style.transform =
-                `scale(${(100 + backgroundSize * 0.4) / 100})`
+                `scale3d(${(100 + backgroundSize * 0.4) / 100}, ${(100 + backgroundSize * 0.4) / 100}, 1)`
             this.$refs.foreground.style.transform =
-                `scale(${(100 + backgroundSize) / 100})`
+                `scale3d(${(100 + backgroundSize) / 100}, ${(100 + backgroundSize) / 100}, 1)`
             console.log(this.$refs.background.style.transform)
         }
     },
