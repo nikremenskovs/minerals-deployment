@@ -14,7 +14,8 @@
             to
             you, each one is unique, natural, and not
             man-made. Do not buy minerals as investments - unless you have 20 years to wait for a return on your
-            investment. And definitely do not believe a mineral dealer if he advises you to invest in minerals - the
+            investment. And definitely do not believe a mineral dealer if he advises you to invest in minerals -
+            the
             only person that will realize a profit is the dealer.</p>
     </div>
 </template>
@@ -25,16 +26,17 @@ import { computed } from 'vue'
 
 const windowScroll = useScroll(window)
 const maxBackgroundSize = 114
-const backgroundSize = computed(() => { return windowScroll.y.value / (maxBackgroundSize - 100) })
-const backgroundTransform = computed(() => { return `scale3d(${(100 + backgroundSize.value * 0.4) / 100}, ${(100 + backgroundSize.value * 0.4) / 100}, 1)` })
-const foregroundTransform = computed(() => { return `scale3d(${(100 + backgroundSize.value) / 100}, ${(100 + backgroundSize.value) / 100}, 1)` })
-const heroTitleOpacity = computed(() => { return `${1 - windowScroll.y.value / 10}` })
-const heroInfoOpacity = computed(() => { return `${0 + windowScroll.y.value / 1000}` })
-const overlayOpacity = computed(() => { return `${0 + windowScroll.y.value / 2500}` })
-const heroInfoParaTransform = computed(() => { return `translate3d(-50%, -${100 + windowScroll.y.value / 20}px, 0px)` })
-</script >
+const backgroundSize = computed(() => windowScroll.y.value / (maxBackgroundSize - 100))
+const backgroundTransform = computed(() => (100 + backgroundSize.value * 0.4) / 100)
+const foregroundTransform = computed(() => (100 + backgroundSize.value) / 100)
+const heroTitleOpacity = computed(() => 1 - windowScroll.y.value / 10)
+const heroInfoOpacity = computed(() => 0 + windowScroll.y.value / 1000)
+const overlayOpacity = computed(() => 0 + windowScroll.y.value / 2500)
+const heroInfoParaTransform = computed(() => `${(100 + windowScroll.y.value / 20) * -1}px`)
 
-<style scoped>
+</script>
+
+<style scoped lang="scss">
 * {
     font-family: sans-serif;
 }
@@ -50,7 +52,7 @@ const heroInfoParaTransform = computed(() => { return `translate3d(-50%, -${100 
     position: fixed;
     width: 100%;
     height: 100vh;
-    transform: v-bind(backgroundTransform);
+    transform: scale3d(#{v-bind(backgroundTransform)}, #{v-bind(backgroundTransform)}, 1);
 }
 
 .overlay {
@@ -70,7 +72,7 @@ const heroInfoParaTransform = computed(() => { return `translate3d(-50%, -${100 
     width: 100%;
     height: 100vh;
     scale: 1.5;
-    transform: v-bind(foregroundTransform);
+    transform: scale3d(#{v-bind(foregroundTransform)}, #{v-bind(foregroundTransform)}, 1);
 }
 
 .hero-title {
@@ -105,6 +107,6 @@ const heroInfoParaTransform = computed(() => { return `translate3d(-50%, -${100 
 .hero-info p {
     font-size: 1rem;
     padding: 0 0.1rem;
-    transform: v-bind(heroInfoParaTransform)
+    transform: translate3d(-50%, #{v-bind(heroInfoParaTransform)}, 0px);
 }
 </style>
