@@ -1,9 +1,10 @@
-<script setup lang="ts">
-import TheWelcome from '../components/TheWelcome.vue'
-</script>
-
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+  <hero-section></hero-section>
 </template>
+
+<script>
+import HeroSection from '../components/homepage/HeroSection.vue'
+export default {
+  components: { HeroSection }
+}
+</script>
