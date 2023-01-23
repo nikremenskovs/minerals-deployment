@@ -1,10 +1,7 @@
 <template>
-  <hero-section></hero-section>
+  <hero-section foreground="foreground.png" background="background.jpg"></hero-section>
 </template>
 
-<script>
+<script setup>
 import HeroSection from '../components/homepage/HeroSection.vue'
-export default {
-  components: { HeroSection }
-}
 </script>

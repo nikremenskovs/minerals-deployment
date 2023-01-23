@@ -5,16 +5,23 @@
     </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { useScroll } from '@vueuse/core'
 import { computed } from 'vue'
 
+const props = defineProps({
+    foreground: { type: String, required: true, default: '' },
+    background: { type: String, required: true, default: '' },
+})
+
+const foregroundImg = `url('src/assets/images/${props.foreground}')`
+const backgroundImg = `url('src/assets/images/${props.background}')`
+
 const windowScroll = useScroll(window)
 const maxBackgroundSize = 114
-const backgroundSize = computed(() => windowScroll.y.value / (maxBackgroundSize - 100))
-const backgroundTransform = computed(() => (100 + backgroundSize.value * 0.4) / 100)
-const foregroundTransform = computed(() => (100 + backgroundSize.value) / 100)
-
+const backgroundSize = computed<number>(() => windowScroll.y.value / (maxBackgroundSize - 100))
+const backgroundTransform = computed<number>(() => (100 + backgroundSize.value * 0.4) / 100)
+const foregroundTransform = computed<number>(() => (100 + backgroundSize.value) / 100)
 </script>
 
 <style scoped lang="scss">
@@ -23,7 +30,7 @@ const foregroundTransform = computed(() => (100 + backgroundSize.value) / 100)
 }
 
 .background {
-    background-image: url('../../assets/images/background.jpg');
+    background-image: v-bind(backgroundImg);
     background-size: cover;
     background-position: center;
     position: fixed;
@@ -33,7 +40,7 @@ const foregroundTransform = computed(() => (100 + backgroundSize.value) / 100)
 }
 
 .foreground {
-    background-image: url('../../assets/images/foreground.png');
+    background-image: v-bind(foregroundImg);
     background-size: cover;
     background-position: center;
     position: fixed;
