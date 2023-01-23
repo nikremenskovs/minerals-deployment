@@ -2,9 +2,6 @@
   <hero-section></hero-section>
 </template>
 
-<script>
+<script setup>
 import HeroSection from '../components/homepage/HeroSection.vue'
-export default {
-  components: { HeroSection }
-}
 </script>
