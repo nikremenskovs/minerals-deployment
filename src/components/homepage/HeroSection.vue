@@ -1,6 +1,6 @@
 <template>
     <section class="hero">
-        <div class="hero-sticky">
+        <div class="hero--sticky">
             <hero-section-bg foreground="foreground.png" background="background.jpg"></hero-section-bg>
             <hero-section-text></hero-section-text>
         </div>
@@ -13,22 +13,16 @@ import HeroSectionBg from './HeroSectionBg.vue'
 </script>
 
 <style scoped lang="scss">
-@mixin positioning ($position, $width, $height) {
-    position: $position;
-    width: $width;
-    height: $height;
-}
-
-//////////////////////////////// Rendered code below
+@import '../../styles/_mixins.scss';
 
 .hero {
     @include positioning(relative, 100%, 275vh);
-}
 
-.hero-sticky {
-    font-family: sans-serif;
-    @include positioning(sticky, 100%, 100vh);
-    top: 0px;
-    overflow: hidden;
+    &--sticky {
+        font-family: sans-serif;
+        @include positioning(sticky, 100%, 100vh);
+        top: 0;
+        overflow: hidden;
+    }
 }
 </style>

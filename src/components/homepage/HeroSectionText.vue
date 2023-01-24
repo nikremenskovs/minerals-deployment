@@ -1,11 +1,11 @@
 <template>
-    <div class="hero-title">
-        <h1>Minerals</h1>
-        <h2>and more</h2>
+    <div class="title">
+        <h1 class="title__head">Minerals</h1>
+        <h2 class="title__subhead">and more</h2>
     </div>
-    <div class="hero-info">
-        <h2>why us?</h2>
-        <p>You should buy minerals because they are beautiful, they appeal
+    <div class="info">
+        <h2 class="info__head">why us?</h2>
+        <p class="info__descr">You should buy minerals because they are beautiful, they appeal
             to
             you, each one is unique, natural, and not
             man-made. Do not buy minerals as investments - unless you have 20 years to wait for a return on your
@@ -30,7 +30,7 @@ const heroInfoParaTransform = computed(() => {
 </script>
 
 <style scoped lang="scss">
-.hero-title {
+.title {
     text-transform: uppercase;
     text-align: center;
     color: white;
@@ -38,36 +38,35 @@ const heroInfoParaTransform = computed(() => {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    opacity: v-bind(heroTitleOpacity)
+    opacity: v-bind(heroTitleOpacity);
+
+    &__head {
+        font-size: 4rem;
+        margin: 0 0 1rem 0;
+    }
+
+    &__subhead {
+        font-size: 2rem;
+        margin: 0;
+    }
 }
 
-.hero-title h1 {
-    font-size: 4rem;
-    margin: 0 0 1rem 0;
-
-}
-
-.hero-title h2 {
-    font-size: 2rem;
-    margin: 0;
-}
-
-.hero-info {
+.info {
     text-align: center;
     color: white;
     position: absolute;
     left: 50%;
     top: 50%;
     opacity: v-bind(heroInfoOpacity);
-}
 
-.hero-info h2 {
-    text-transform: capitalize;
-    font-size: 3rem;
-    transform: translate(-50%, -250%);
-}
+    &__head {
+        text-transform: capitalize;
+        font-size: 3rem;
+        transform: translate(-50%, -250%);
+    }
 
-.hero-info p {
-    transform: translate3d(-50%, #{v-bind(heroInfoParaTransform)}, 0px);
+    &__descr {
+        transform: translate3d(-50%, #{v-bind(heroInfoParaTransform)}, 0px);
+    }
 }
 </style>

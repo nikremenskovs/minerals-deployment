@@ -31,20 +31,7 @@ const overlayOpacity = computed(() => {
 </script>
 
 <style scoped lang="scss">
-@mixin positioning ($position, $width, $height) {
-    position: $position;
-    width: $width;
-    height: $height;
-}
-
-//////////////////////////////// Rendered code below
-
-.hero-sticky {
-    font-family: sans-serif;
-    @include positioning(sticky, 100%, 100vh);
-    top: 0px;
-    overflow: hidden;
-}
+@import '../../styles/_mixins.scss';
 
 .background {
     @include positioning(absolute, 100%, 100vh);
