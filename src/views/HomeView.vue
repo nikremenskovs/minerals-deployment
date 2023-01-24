@@ -4,7 +4,7 @@
 </template>
 
 <script setup>
-import HeroSection from '../components/homepage/HeroSection.vue'
+import HeroSection from "../components/homepage/HeroSection.vue";
 </script>
 
 <style scoped>

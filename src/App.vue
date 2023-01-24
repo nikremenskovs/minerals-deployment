@@ -2,7 +2,6 @@
   <RouterView />
 </template>
 
-
 <style lang="scss">
 body {
   margin: 0;
