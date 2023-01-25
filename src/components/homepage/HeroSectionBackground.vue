@@ -16,7 +16,7 @@ const foregroundImg = `url('src/assets/images/${props.foreground}')`;
 const backgroundImg = `url('src/assets/images/${props.background}')`;
 
 const { windowScroll, backgroundSize } = useParallax();
-const backgroundTransform = computed(
+const backgroundScale = computed(
   () => (100 + backgroundSize.value * 0.4) / 100
 );
 const foregroundScale = computed(() => {
@@ -50,11 +50,7 @@ const overlayOpacity = computed(() => {
   background-image: v-bind(backgroundImg);
   background-size: cover;
   background-position: center;
-  transform: scale3d(
-    #{v-bind(backgroundTransform)},
-    #{v-bind(backgroundTransform)},
-    1
-  );
+  transform: scale3d(#{v-bind(backgroundScale)}, #{v-bind(backgroundScale)}, 1);
 }
 
 .overlay {

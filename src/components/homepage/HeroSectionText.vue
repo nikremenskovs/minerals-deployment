@@ -20,7 +20,14 @@
 import { computed } from "vue";
 import { useParallax } from "../../composables/useParallax.js";
 const { windowScroll } = useParallax();
-const heroTitleOpacity = computed(() => 1 - windowScroll.y.value / 8);
+const heroTitleOpacity = computed(() => {
+  const value = 1 - windowScroll.y.value / 8;
+  if (value <= 0) {
+    return 0;
+  } else {
+    return value;
+  }
+});
 const heroInfoOpacity = computed(() => {
   if (windowScroll.y.value < 1000) {
     return 0 + windowScroll.y.value / 1000;
