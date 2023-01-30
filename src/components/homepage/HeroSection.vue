@@ -4,8 +4,8 @@
       <hero-section-background
         foreground="foreground.png"
         background="background.jpg"
-      ></hero-section-background>
-      <hero-section-text></hero-section-text>
+      />
+      <hero-section-text />
     </div>
   </section>
 </template>
@@ -19,7 +19,7 @@ import HeroSectionBackground from "./HeroSectionBackground.vue";
 @import "../../styles/_mixins.scss";
 
 .hero {
-  @include positioning(relative, 100%, 275vh);
+  @include positioning(relative, 100%, 260vh);
 
   &--sticky {
     font-family: sans-serif;

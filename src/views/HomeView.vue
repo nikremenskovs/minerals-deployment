@@ -1,6 +1,6 @@
 <template>
-  <hero-section></hero-section>
-  <section class="sectionTwo"></section>
+  <hero-section />
+  <section class="sectionTwo" />
 </template>
 
 <script setup>

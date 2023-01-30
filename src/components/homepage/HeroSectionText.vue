@@ -17,31 +17,88 @@
 </template>
 
 <script setup>
-import { computed } from "vue";
-import { useParallax } from "../../composables/useParallax.js";
-const { windowScroll } = useParallax();
-const heroTitleOpacity = computed(() => {
-  const value = 1 - windowScroll.y.value / 8;
-  if (value <= 0) {
-    return 0;
-  } else {
-    return value;
-  }
+import { onMounted, onUnmounted, ref } from "vue";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
+
+const windowHeight = ref(window.innerHeight);
+function textAnimation() {
+  gsap.fromTo(
+    ".title",
+    { opacity: 1 },
+    {
+      scrollTrigger: {
+        trigger: ".title",
+        start: 0,
+        end: windowHeight.value * (40 / 100),
+        scrub: 0.1,
+        toggleActions: "restart none none reverse",
+      },
+      opacity: 0,
+    }
+  );
+  gsap.set(".info", { opacity: 0 });
+  gsap.fromTo(
+    ".info",
+    { opacity: 0 },
+    {
+      scrollTrigger: {
+        trigger: ".info",
+        start: windowHeight.value * (45 / 100),
+        end: windowHeight.value * (80 / 100),
+        scrub: 0.1,
+        toggleActions: "restart none none reverse",
+      },
+      opacity: 1,
+    }
+  );
+  gsap.fromTo(
+    ".info",
+    { opacity: 1 },
+    {
+      scrollTrigger: {
+        trigger: ".info",
+        start: windowHeight.value * (110 / 100),
+        end: windowHeight.value * (160 / 100),
+        scrub: 0.1,
+        toggleActions: "restart none none reverse",
+      },
+      opacity: 0,
+    }
+  );
+  gsap.set(".info", { opacity: 0 });
+
+  gsap.fromTo(
+    ".info__description",
+    { y: 50, x: "-50%" },
+    {
+      scrollTrigger: {
+        trigger: ".info__description",
+        start: windowHeight.value * (45 / 100),
+        end: windowHeight.value * (80 / 100),
+        scrub: 0.5,
+        toggleActions: "restart none none reverse",
+      },
+      y: -150,
+    }
+  );
+}
+function handleResize() {
+  gsap.killTweensOf(".info");
+  gsap.killTweensOf(".title");
+  gsap.killTweensOf(".info__description");
+  windowHeight.value = window.innerHeight;
+  textAnimation();
+}
+
+onMounted(() => {
+  textAnimation();
+  window.addEventListener("resize", () => handleResize());
 });
-const heroInfoOpacity = computed(() => {
-  if (windowScroll.y.value < 1000) {
-    return 0 + windowScroll.y.value / 1000;
-  } else {
-    return 1 - (windowScroll.y.value - 1000) * 0.00175;
-  }
-});
-const heroInfoParaTransform = computed(() => {
-  const value = (100 + windowScroll.y.value / 20) * -1;
-  if (value < -150) {
-    return "-150px";
-  } else {
-    return `${value}px`;
-  }
+onUnmounted(() => {
+  ScrollTrigger.killAll();
+  window.removeEventListener("resize", () => handleResize());
 });
 </script>
 
@@ -54,7 +111,6 @@ const heroInfoParaTransform = computed(() => {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  opacity: v-bind(heroTitleOpacity);
 
   &__heading {
     font-size: 4rem;
@@ -73,16 +129,15 @@ const heroInfoParaTransform = computed(() => {
   position: absolute;
   left: 50%;
   top: 50%;
-  opacity: v-bind(heroInfoOpacity);
 
   &__heading {
     text-transform: capitalize;
     font-size: 3rem;
     transform: translate(-50%, -250%);
   }
+}
 
-  &__description {
-    transform: translate3d(-50%, #{v-bind(heroInfoParaTransform)}, 0px);
-  }
+.visible {
+  visibility: visible;
 }
 </style>

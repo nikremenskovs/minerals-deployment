@@ -1,12 +1,14 @@
 <template>
-  <div class="background"></div>
-  <div class="foreground"></div>
-  <div class="overlay"></div>
+  <div class="background" />
+  <div class="foreground" />
+  <div class="overlay" />
 </template>
 
 <script setup>
-import { computed } from "vue";
-import { useParallax } from "../../composables/useParallax.js";
+import { onMounted, onUnmounted, ref } from "vue";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 const props = defineProps({
   foreground: { type: String, required: true, default: "" },
@@ -15,30 +17,81 @@ const props = defineProps({
 const foregroundImg = `url('src/assets/images/${props.foreground}')`;
 const backgroundImg = `url('src/assets/images/${props.background}')`;
 
-const { windowScroll, backgroundSize } = useParallax();
-const backgroundScale = computed(
-  () => (100 + backgroundSize.value * 0.4) / 100
-);
-const foregroundScale = computed(() => {
-  if (windowScroll.y.value < 1000) {
-    return (100 + backgroundSize.value) / 100;
-  } else {
-    return 1.71357;
-  }
+const windowHeight = ref(window.innerHeight);
+
+function backgroundAnimation() {
+  gsap.fromTo(
+    ".background",
+    { scale: 1 },
+    {
+      scrollTrigger: {
+        trigger: ".background",
+        start: 0,
+        end: windowHeight.value * (110 / 100),
+        scrub: true,
+        toggleActions: "restart none play reverse",
+      },
+      scale: 1.3,
+    }
+  );
+  gsap.fromTo(
+    ".foreground",
+    { scale: 1 },
+    {
+      scrollTrigger: {
+        trigger: ".foreground",
+        start: 0,
+        end: windowHeight.value * (80 / 100),
+        scrub: true,
+        toggleActions: "restart none none reverse",
+      },
+      scale: 1.7,
+    }
+  );
+  gsap.fromTo(
+    ".foreground",
+    { y: 0 },
+    {
+      scrollTrigger: {
+        trigger: ".foreground",
+        start: windowHeight.value * (110 / 100),
+        end: windowHeight.value * (180 / 100),
+        scrub: true,
+        toggleActions: "restart none none reverse",
+      },
+      y: -350,
+    }
+  ),
+    gsap.fromTo(
+      ".overlay",
+      { opacity: 0 },
+      {
+        scrollTrigger: {
+          trigger: ".overlay",
+          start: windowHeight.value * (80 / 100),
+          end: windowHeight.value * (160 / 100),
+          scrub: true,
+          toggleActions: "restart none none reverse",
+        },
+        alpha: 1,
+      }
+    );
+}
+function handleResize() {
+  gsap.killTweensOf(".background");
+  gsap.killTweensOf(".foreground");
+  gsap.killTweensOf(".overlay");
+  windowHeight.value = window.innerHeight;
+  backgroundAnimation();
+}
+
+onMounted(() => {
+  backgroundAnimation();
+  window.addEventListener("resize", () => handleResize());
 });
-const foregroundTranslate = computed(() => {
-  if (windowScroll.y.value > 1000) {
-    return `${(0 + (windowScroll.y.value - 1000) / 4) * -1}px`;
-  } else {
-    return "0px";
-  }
-});
-const overlayOpacity = computed(() => {
-  if (windowScroll.y.value < 1000) {
-    return 0;
-  } else {
-    return (0 + windowScroll.y.value - 1000) / 800;
-  }
+onUnmounted(() => {
+  ScrollTrigger.killAll();
+  window.removeEventListener("resize", () => handleResize());
 });
 </script>
 
@@ -50,13 +103,11 @@ const overlayOpacity = computed(() => {
   background-image: v-bind(backgroundImg);
   background-size: cover;
   background-position: center;
-  transform: scale3d(#{v-bind(backgroundScale)}, #{v-bind(backgroundScale)}, 1);
 }
 
 .overlay {
   @include positioning(absolute, 100%, 100vh);
   background-color: black;
-  opacity: v-bind(overlayOpacity);
 }
 
 .foreground {
@@ -65,7 +116,5 @@ const overlayOpacity = computed(() => {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  transform: scale3d(#{v-bind(foregroundScale)}, #{v-bind(foregroundScale)}, 1)
-    translate3d(0px, #{v-bind(foregroundTranslate)}, 0px);
 }
 </style>
