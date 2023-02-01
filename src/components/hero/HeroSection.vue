@@ -11,8 +11,8 @@
 </template>
 
 <script setup>
-import HeroSectionText from "./HeroSectionText.vue";
 import HeroSectionBackground from "./HeroSectionBackground.vue";
+import HeroSectionText from "./HeroSectionText.vue";
 </script>
 
 <style scoped lang="scss">

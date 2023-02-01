@@ -5,7 +5,7 @@
 </template>
 
 <script setup>
-import { onMounted, onUnmounted, ref } from "vue";
+import { onMounted, onUnmounted } from "vue";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
@@ -17,8 +17,6 @@ const props = defineProps({
 const foregroundImg = `url('src/assets/images/${props.foreground}')`;
 const backgroundImg = `url('src/assets/images/${props.background}')`;
 
-const windowHeight = ref(window.innerHeight);
-
 function backgroundAnimation() {
   gsap.fromTo(
     ".background",
@@ -26,8 +24,8 @@ function backgroundAnimation() {
     {
       scrollTrigger: {
         trigger: ".background",
-        start: 0,
-        end: windowHeight.value * (110 / 100),
+        start: "top top",
+        end: "bottom+=100% bottom",
         scrub: true,
         toggleActions: "restart none play reverse",
       },
@@ -39,9 +37,9 @@ function backgroundAnimation() {
     { scale: 1 },
     {
       scrollTrigger: {
-        trigger: ".foreground",
-        start: 0,
-        end: windowHeight.value * (80 / 100),
+        trigger: ".background",
+        start: "top top",
+        end: "bottom+=80% bottom",
         scrub: true,
         toggleActions: "restart none none reverse",
       },
@@ -53,13 +51,13 @@ function backgroundAnimation() {
     { y: 0 },
     {
       scrollTrigger: {
-        trigger: ".foreground",
-        start: windowHeight.value * (110 / 100),
-        end: windowHeight.value * (180 / 100),
+        trigger: ".background",
+        start: "bottom+=100% bottom",
+        end: "bottom+=160% bottom",
         scrub: true,
         toggleActions: "restart none none reverse",
       },
-      y: -350,
+      y: -300,
     }
   ),
     gsap.fromTo(
@@ -68,30 +66,21 @@ function backgroundAnimation() {
       {
         scrollTrigger: {
           trigger: ".overlay",
-          start: windowHeight.value * (80 / 100),
-          end: windowHeight.value * (160 / 100),
+          start: "bottom+=80% bottom",
+          end: "bottom+=160% bottom",
           scrub: true,
           toggleActions: "restart none none reverse",
         },
-        alpha: 1,
+        opacity: 1,
       }
     );
-}
-function handleResize() {
-  gsap.killTweensOf(".background");
-  gsap.killTweensOf(".foreground");
-  gsap.killTweensOf(".overlay");
-  windowHeight.value = window.innerHeight;
-  backgroundAnimation();
 }
 
 onMounted(() => {
   backgroundAnimation();
-  window.addEventListener("resize", () => handleResize());
 });
 onUnmounted(() => {
   ScrollTrigger.killAll();
-  window.removeEventListener("resize", () => handleResize());
 });
 </script>
 
