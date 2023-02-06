@@ -1,17 +1,26 @@
 <template>
   <nav class="main-nav">
     <ul class="main-nav__list">
-      <main-nav-item to=".hero">hero</main-nav-item>
-      <main-nav-item to=".sectionTwo">two</main-nav-item>
-      <main-nav-item to=".sectionThree">three</main-nav-item>
-      <main-nav-item to=".sectionFour">four</main-nav-item>
+      <li class="main-nav__item">
+        <router-link class="main-nav__link" to="#hero">hero</router-link>
+      </li>
+      <li class="main-nav__item">
+        <router-link class="main-nav__link" to="#sectionTwo">two</router-link>
+      </li>
+      <li class="main-nav__item">
+        <router-link class="main-nav__link" to="#sectionThree"
+          >three</router-link
+        >
+      </li>
+      <li class="main-nav__item">
+        <router-link class="main-nav__link" to="#sectionFour">four</router-link>
+      </li>
     </ul>
     <main-nav-dot />
   </nav>
 </template>
 
 <script setup>
-import MainNavItem from "@/components/navbar/MainNavItem.vue";
 import MainNavDot from "@/components/navbar/MainNavDot.vue";
 </script>
 
@@ -31,6 +40,16 @@ import MainNavDot from "@/components/navbar/MainNavDot.vue";
     display: flex;
     padding: 3rem 0 0 0;
     margin: 0 0 0.5rem 0;
+  }
+  &__item {
+    width: 25%;
+    display: flex;
+    justify-content: center;
+  }
+  &__link {
+    color: white;
+    text-transform: capitalize;
+    text-decoration: none;
   }
 }
 </style>

@@ -1,9 +1,9 @@
 <template>
   <main-nav />
-  <hero-section class="hero" />
-  <section class="sectionTwo" />
-  <section class="sectionThree" />
-  <section class="sectionFour" />
+  <hero-section id="hero" />
+  <section id="sectionTwo" />
+  <section id="sectionThree" />
+  <section id="sectionFour" />
 </template>
 
 <script setup>
@@ -12,17 +12,17 @@ import MainNav from "@/components/navbar/MainNav.vue";
 </script>
 
 <style scoped>
-.sectionTwo {
+#sectionTwo {
   width: 100%;
   height: 100vh;
   background: yellow;
 }
-.sectionThree {
+#sectionThree {
   width: 100%;
   height: 100vh;
   background: orange;
 }
-.sectionFour {
+#sectionFour {
   width: 100%;
   height: 100vh;
   background: blue;

@@ -30,7 +30,7 @@ function dotAnimation() {
     { x: "12.5%" },
     {
       scrollTrigger: {
-        trigger: ".sectionTwo",
+        trigger: "#sectionTwo",
         start: "top 75%",
         end: "top top",
         scrub: 0.1,
@@ -44,7 +44,7 @@ function dotAnimation() {
     { x: "37.5%" },
     {
       scrollTrigger: {
-        trigger: ".sectionThree",
+        trigger: "#sectionThree",
         start: "top 75%",
         end: "top top",
         scrub: 0.1,
@@ -58,7 +58,7 @@ function dotAnimation() {
     { x: "62.5%" },
     {
       scrollTrigger: {
-        trigger: ".sectionFour",
+        trigger: "#sectionFour",
         start: "top 75%",
         end: "top top",
         scrub: 0.1,
