@@ -126,11 +126,4 @@ onUnmounted(() => {
     transform: translate(-50%, -250%);
   }
 }
-
-.test {
-  position: fixed;
-  top: 100px;
-  left: 100px;
-  font-size: 6rem;
-}
 </style>
