@@ -6,13 +6,17 @@
         background="background.jpg"
       />
       <hero-section-text />
+      <hero-section-cues
+        cueScrollImage="https://uploads-ssl.webflow.com/5cff83ac2044e22cb8cf2f11/5d00043816a6c695bcf1581a_scroll.gif"
+      />
     </div>
   </section>
 </template>
 
 <script setup>
-import HeroSectionText from "./HeroSectionText.vue";
 import HeroSectionBackground from "./HeroSectionBackground.vue";
+import HeroSectionText from "./HeroSectionText.vue";
+import HeroSectionCues from "./HeroSectionCues.vue";
 </script>
 
 <style scoped lang="scss">

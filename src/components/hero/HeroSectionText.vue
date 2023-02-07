@@ -17,21 +17,20 @@
 </template>
 
 <script setup>
-import { onMounted, onUnmounted, ref } from "vue";
+import { onMounted, onUnmounted } from "vue";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
-const windowHeight = ref(window.innerHeight);
 function textAnimation() {
   gsap.fromTo(
     ".title",
     { opacity: 1 },
     {
       scrollTrigger: {
-        trigger: ".title",
-        start: 0,
-        end: windowHeight.value * (40 / 100),
+        trigger: ".background",
+        start: "top top",
+        end: "bottom+=40% bottom",
         scrub: 0.1,
         toggleActions: "restart none none reverse",
       },
@@ -44,9 +43,9 @@ function textAnimation() {
     { opacity: 0 },
     {
       scrollTrigger: {
-        trigger: ".info",
-        start: windowHeight.value * (45 / 100),
-        end: windowHeight.value * (80 / 100),
+        trigger: ".background",
+        start: "bottom+=40% bottom",
+        end: "bottom+=80% bottom",
         scrub: 0.1,
         toggleActions: "restart none none reverse",
       },
@@ -58,9 +57,9 @@ function textAnimation() {
     { opacity: 1 },
     {
       scrollTrigger: {
-        trigger: ".info",
-        start: windowHeight.value * (110 / 100),
-        end: windowHeight.value * (160 / 100),
+        trigger: ".background",
+        start: "bottom+=100% bottom",
+        end: "bottom+=160% bottom",
         scrub: 0.1,
         toggleActions: "restart none none reverse",
       },
@@ -74,9 +73,9 @@ function textAnimation() {
     { y: 50, x: "-50%" },
     {
       scrollTrigger: {
-        trigger: ".info__description",
-        start: windowHeight.value * (45 / 100),
-        end: windowHeight.value * (80 / 100),
+        trigger: ".background",
+        start: "bottom+=40% bottom",
+        end: "bottom+=80% bottom",
         scrub: 0.5,
         toggleActions: "restart none none reverse",
       },
@@ -84,21 +83,12 @@ function textAnimation() {
     }
   );
 }
-function handleResize() {
-  gsap.killTweensOf(".info");
-  gsap.killTweensOf(".title");
-  gsap.killTweensOf(".info__description");
-  windowHeight.value = window.innerHeight;
-  textAnimation();
-}
 
 onMounted(() => {
   textAnimation();
-  window.addEventListener("resize", () => handleResize());
 });
 onUnmounted(() => {
   ScrollTrigger.killAll();
-  window.removeEventListener("resize", () => handleResize());
 });
 </script>
 
@@ -135,9 +125,5 @@ onUnmounted(() => {
     font-size: 3rem;
     transform: translate(-50%, -250%);
   }
-}
-
-.visible {
-  visibility: visible;
 }
 </style>
