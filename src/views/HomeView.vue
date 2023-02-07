@@ -1,6 +1,6 @@
 <template>
   <main-nav />
-  <hero-section id="hero" />
+  <HeroSection id="hero" />
   <section id="sectionTwo" />
   <section id="sectionThree" />
   <section id="sectionFour" />

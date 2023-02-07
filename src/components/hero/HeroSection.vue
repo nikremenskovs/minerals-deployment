@@ -1,12 +1,12 @@
 <template>
   <section class="hero">
     <div class="hero--sticky">
-      <hero-section-background
+      <HeroSectionBackground
         foreground="foreground.png"
         background="background.jpg"
       />
-      <hero-section-text />
-      <hero-section-cues
+      <HeroSectionText />
+      <HeroSectionCues
         cueScrollImage="https://uploads-ssl.webflow.com/5cff83ac2044e22cb8cf2f11/5d00043816a6c695bcf1581a_scroll.gif"
       />
     </div>

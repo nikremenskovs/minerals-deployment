@@ -8,15 +8,15 @@
         <router-link class="main-nav__link" to="#sectionTwo">two</router-link>
       </li>
       <li class="main-nav__item">
-        <router-link class="main-nav__link" to="#sectionThree"
-          >three</router-link
-        >
+        <router-link class="main-nav__link" to="#sectionThree">
+          three
+        </router-link>
       </li>
       <li class="main-nav__item">
         <router-link class="main-nav__link" to="#sectionFour">four</router-link>
       </li>
     </ul>
-    <main-nav-dot />
+    <MainNavDot />
   </nav>
 </template>
 
