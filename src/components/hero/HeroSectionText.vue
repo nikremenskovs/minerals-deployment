@@ -70,7 +70,7 @@ function textAnimation() {
 
   gsap.fromTo(
     ".info__description",
-    { y: 50, x: "-50%" },
+    { y: 200 },
     {
       scrollTrigger: {
         trigger: ".background",
@@ -79,7 +79,7 @@ function textAnimation() {
         scrub: 0.5,
         toggleActions: "restart none none reverse",
       },
-      y: -150,
+      y: -20,
     }
   );
 }
@@ -103,7 +103,7 @@ onUnmounted(() => {
   transform: translate(-50%, -50%);
 
   &__heading {
-    font-size: 4rem;
+    font-size: 3.5rem;
     margin: 0 0 1rem 0;
   }
 
@@ -119,11 +119,13 @@ onUnmounted(() => {
   position: absolute;
   left: 50%;
   top: 50%;
+  transform: translate(-50%, -50%);
+  width: 75%;
+  max-width: 700px;
 
   &__heading {
     text-transform: capitalize;
     font-size: 3rem;
-    transform: translate(-50%, -250%);
   }
 }
 </style>

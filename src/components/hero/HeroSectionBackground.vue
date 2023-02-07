@@ -43,7 +43,7 @@ function backgroundAnimation() {
         scrub: 0.5,
         toggleActions: "restart none none reverse",
       },
-      scale: 1.7,
+      scale: 2,
     }
   );
   gsap.fromTo(
@@ -100,7 +100,7 @@ onUnmounted(() => {
 }
 
 .foreground {
-  @include positioning(absolute, 100%, 150vh);
+  @include positioning(absolute, 100%, 120vh);
   background-image: v-bind(foregroundImg);
   background-size: cover;
   background-repeat: no-repeat;
