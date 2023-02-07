@@ -10,7 +10,6 @@
   </section>
 </template>
 
-
 <script setup>
 import HeroSectionText from "./HeroSectionText.vue";
 import HeroSectionBackground from "./HeroSectionBackground.vue";
@@ -28,4 +27,5 @@ import HeroSectionBackground from "./HeroSectionBackground.vue";
     top: 0;
     overflow: hidden;
   }
+}
 </style>
