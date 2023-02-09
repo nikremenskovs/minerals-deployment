@@ -3,3 +3,14 @@
     width: $width;
     height: $height;
 }
+
+@mixin galleryGridImage ($row, $column, $scale, $translateX, $translateY) {
+    grid-row: $row;
+    grid-column: $column;
+    scale: $scale;
+    transform: translate($translateX, $translateY);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    opacity: 0;
+}

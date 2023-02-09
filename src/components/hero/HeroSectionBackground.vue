@@ -11,8 +11,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const props = defineProps({
-  foreground: { type: String, required: true, default: "" },
-  background: { type: String, required: true, default: "" },
+  foreground: { type: String, required: true },
+  background: { type: String, required: true },
 });
 const foregroundImg = `url('src/assets/images/${props.foreground}')`;
 const backgroundImg = `url('src/assets/images/${props.background}')`;
