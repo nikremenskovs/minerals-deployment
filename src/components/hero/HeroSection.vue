@@ -2,13 +2,16 @@
   <section class="hero">
     <div class="hero--sticky">
       <HeroSectionBackground
-        foreground="foreground.png"
-        background="background.jpg"
+        :foreground="bannerData.foreground"
+        :background="bannerData.background"
       />
-      <HeroSectionText />
-      <HeroSectionCues
-        cueScrollImage="https://uploads-ssl.webflow.com/5cff83ac2044e22cb8cf2f11/5d00043816a6c695bcf1581a_scroll.gif"
+      <HeroSectionText
+        :titleHeading="bannerData.titleHeading"
+        :titleSubheading="bannerData.titleSubheading"
+        :infoHeading="bannerData.infoHeading"
+        :infoDescription="bannerData.infoDescription"
       />
+      <HeroSectionCues :cueScrollImage="bannerData.scrollCue" />
     </div>
   </section>
 </template>
@@ -17,6 +20,17 @@
 import HeroSectionBackground from "./HeroSectionBackground.vue";
 import HeroSectionText from "./HeroSectionText.vue";
 import HeroSectionCues from "./HeroSectionCues.vue";
+
+import { onMounted } from "vue";
+import { useBannerStore } from "@/stores/BannerStore.js";
+import { storeToRefs } from "pinia";
+
+const bannerStore = useBannerStore();
+const { bannerData } = storeToRefs(bannerStore);
+
+onMounted(() => {
+  bannerStore.getBannerData();
+});
 </script>
 
 <style scoped lang="scss">
