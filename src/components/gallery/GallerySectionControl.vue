@@ -1,8 +1,8 @@
 <template>
   <div class="control-gallery">
     <div class="view-gallery" @click="viewGallery">
-      <h2 class="view-gallery__heading">gallery</h2>
-      <div class="view-gallery__subheading">view gallery</div>
+      <h2 class="view-gallery__heading">{{ props.galleryHeading }}</h2>
+      <div class="view-gallery__subheading">{{ props.gallerySubheading }}</div>
     </div>
     <div
       class="close-gallery"
@@ -21,6 +21,11 @@
 <script setup>
 import { onMounted, onUnmounted } from "vue";
 import { gsap } from "gsap";
+
+const props = defineProps({
+  galleryHeading: { type: String, required: true },
+  gallerySubheading: { type: String, required: true },
+});
 
 const galleryTimeline = gsap.timeline({ paused: true });
 const controlsTimeline = gsap.timeline({ paused: true });

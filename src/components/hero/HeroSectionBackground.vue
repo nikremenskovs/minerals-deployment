@@ -14,12 +14,12 @@ const props = defineProps({
   foreground: { type: String, required: true },
   background: { type: String, required: true },
 });
-const foregroundImg = computed(() => {
-  return `url('${props.foreground}')`;
-});
-const backgroundImg = computed(() => {
-  return `url('${props.background}')`;
-});
+const foregroundImg = computed(
+  () => `url('http://localhost:1337${props.foreground}')`
+);
+const backgroundImg = computed(
+  () => `url('http://localhost:1337${props.background}')`
+);
 
 function backgroundAnimation() {
   gsap.fromTo(

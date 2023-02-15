@@ -3,14 +3,28 @@
     <div class="background-grid">
       <div v-for="n in 4" :key="n" class="background-grid__quarter" />
     </div>
-    <GallerySectionLayoutGrid />
-    <GallerySectionControl />
+    <GallerySectionLayoutGrid :galleryImages="galleryData.galleryImages" />
+    <GallerySectionControl
+      :galleryHeading="galleryData.galleryHeading"
+      :gallerySubheading="galleryData.gallerySubheading"
+    />
   </section>
 </template>
 
 <script setup>
 import GallerySectionControl from "./GallerySectionControl.vue";
 import GallerySectionLayoutGrid from "./GallerySectionLayoutGrid.vue";
+
+import { onMounted } from "vue";
+import { useGalleryStore } from "@/stores/GalleryStore.js";
+import { storeToRefs } from "pinia";
+
+const galleryStore = useGalleryStore();
+const { galleryData } = storeToRefs(galleryStore);
+
+onMounted(() => {
+  galleryStore.getGalleryData();
+});
 </script>
 
 <style scoped lang="scss">

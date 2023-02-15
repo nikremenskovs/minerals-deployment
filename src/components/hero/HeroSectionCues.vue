@@ -1,5 +1,8 @@
 <template>
-  <img class="cue__scroll" :src="props.cueScrollImage" />
+  <img
+    class="cue__scroll"
+    :src="`http://localhost:1337${props.cueScrollImage}`"
+  />
   <div class="cue__line">
     <div class="cue__line--scroll"></div>
   </div>

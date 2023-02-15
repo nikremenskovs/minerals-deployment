@@ -25,15 +25,14 @@ export const useBannerStore = defineStore("BannerStore", {
           "http://localhost:1337/api/homepage-banner?fields=titleHeading,titleSubheading,infoHeading,infoDescription&populate=background,foreground,scrollCue"
         )
         .then((response) => {
-          this.model.titleHeading = response.data.data.attributes.titleHeading;
-          this.model.titleSubheading =
-            response.data.data.attributes.titleSubheading;
-          this.model.infoHeading = response.data.data.attributes.infoHeading;
-          this.model.infoDescription =
-            response.data.data.attributes.infoDescription;
-          this.model.background = `http://localhost:1337${response.data.data.attributes.background.data.attributes.url}`;
-          this.model.foreground = `http://localhost:1337${response.data.data.attributes.foreground.data.attributes.url}`;
-          this.model.scrollCue = `http://localhost:1337${response.data.data.attributes.scrollCue.data.attributes.url}`;
+          const data = response.data.data.attributes;
+          this.model.titleHeading = data.titleHeading;
+          this.model.titleSubheading = data.titleSubheading;
+          this.model.infoHeading = data.infoHeading;
+          this.model.infoDescription = data.infoDescription;
+          this.model.background = data.background.data.attributes.url;
+          this.model.foreground = data.foreground.data.attributes.url;
+          this.model.scrollCue = data.scrollCue.data.attributes.url;
         });
     },
   },
