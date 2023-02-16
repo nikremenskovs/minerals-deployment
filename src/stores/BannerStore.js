@@ -22,10 +22,10 @@ export const useBannerStore = defineStore("BannerStore", {
     getBannerData() {
       axios
         .get(
-          "http://localhost:1337/api/homepage-banner?fields=titleHeading,titleSubheading,infoHeading,infoDescription&populate=background,foreground,scrollCue"
+          "http://localhost:1337/api/homepage?fields=id&populate[0]=banner&populate[1]=banner.background&populate[2]=banner.foreground&populate[3]=banner.scrollCue"
         )
         .then((response) => {
-          const data = response.data.data.attributes;
+          const data = response.data.data.attributes.banner;
           this.model.titleHeading = data.titleHeading;
           this.model.titleSubheading = data.titleSubheading;
           this.model.infoHeading = data.infoHeading;

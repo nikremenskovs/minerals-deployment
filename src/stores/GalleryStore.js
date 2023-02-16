@@ -18,10 +18,10 @@ export const useGalleryStore = defineStore("GalleryStore", {
     getGalleryData() {
       axios
         .get(
-          "http://localhost:1337/api/homepage-gallery?fields=galleryHeading,gallerySubheading&populate=galleryImages"
+          "http://localhost:1337/api/homepage?fields=id&populate[0]=gallery&populate[1]=gallery.galleryImages"
         )
         .then((response) => {
-          const data = response.data.data.attributes;
+          const data = response.data.data.attributes.gallery;
           this.model.galleryHeading = data.galleryHeading;
           this.model.gallerySubheading = data.gallerySubheading;
           data.galleryImages.data.forEach((image) =>
