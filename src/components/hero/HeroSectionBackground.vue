@@ -15,10 +15,12 @@ const props = defineProps({
   background: { type: String, required: true },
 });
 const foregroundImg = computed(
-  () => `url('http://localhost:1337${props.foreground}')`
+  () =>
+    `url('https://cloud.squidex.io/api/assets/minerals-squidex/${props.foreground}')`
 );
 const backgroundImg = computed(
-  () => `url('http://localhost:1337${props.background}')`
+  () =>
+    `url('https://cloud.squidex.io/api/assets/minerals-squidex/${props.background}')`
 );
 
 function backgroundAnimation() {

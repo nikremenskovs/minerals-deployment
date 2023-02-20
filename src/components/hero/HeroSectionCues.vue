@@ -1,7 +1,7 @@
 <template>
   <img
     class="cue__scroll"
-    :src="`http://localhost:1337${props.cueScrollImage}`"
+    :src="`https://cloud.squidex.io/api/assets/minerals-squidex/${props.cueScrollImage}`"
   />
   <div class="cue__line">
     <div class="cue__line--scroll"></div>

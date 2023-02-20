@@ -15,39 +15,50 @@ const props = defineProps({
 });
 
 const image1 = computed(
-  () => `url('http://localhost:1337${props.galleryImages[0]}')`
+  () =>
+    `url('https://cloud.squidex.io/api/assets/minerals-squidex/${props.galleryImages[0]}')`
 );
 
 const image2 = computed(
-  () => `url('http://localhost:1337${props.galleryImages[1]}')`
+  () =>
+    `url('https://cloud.squidex.io/api/assets/minerals-squidex/${props.galleryImages[1]}')`
 );
 
 const image3 = computed(
-  () => `url('http://localhost:1337${props.galleryImages[2]}')`
+  () =>
+    `url('https://cloud.squidex.io/api/assets/minerals-squidex/${props.galleryImages[2]}')`
 );
 const image4 = computed(
-  () => `url('http://localhost:1337${props.galleryImages[3]}')`
+  () =>
+    `url('https://cloud.squidex.io/api/assets/minerals-squidex/${props.galleryImages[3]}')`
 );
 const image5 = computed(
-  () => `url('http://localhost:1337${props.galleryImages[4]}')`
+  () =>
+    `url('https://cloud.squidex.io/api/assets/minerals-squidex/${props.galleryImages[4]}')`
 );
 const image6 = computed(
-  () => `url('http://localhost:1337${props.galleryImages[5]}')`
+  () =>
+    `url('https://cloud.squidex.io/api/assets/minerals-squidex/${props.galleryImages[5]}')`
 );
 const image7 = computed(
-  () => `url('http://localhost:1337${props.galleryImages[6]}')`
+  () =>
+    `url('https://cloud.squidex.io/api/assets/minerals-squidex/${props.galleryImages[6]}')`
 );
 const image8 = computed(
-  () => `url('http://localhost:1337${props.galleryImages[7]}')`
+  () =>
+    `url('https://cloud.squidex.io/api/assets/minerals-squidex/${props.galleryImages[7]}')`
 );
 const image9 = computed(
-  () => `url('http://localhost:1337${props.galleryImages[8]}')`
+  () =>
+    `url('https://cloud.squidex.io/api/assets/minerals-squidex/${props.galleryImages[8]}')`
 );
 const image10 = computed(
-  () => `url('http://localhost:1337${props.galleryImages[9]}')`
+  () =>
+    `url('https://cloud.squidex.io/api/assets/minerals-squidex/${props.galleryImages[9]}')`
 );
 const image11 = computed(
-  () => `url('http://localhost:1337${props.galleryImages[10]}')`
+  () =>
+    `url('https://cloud.squidex.io/api/assets/minerals-squidex/${props.galleryImages[10]}')`
 );
 function opacityGallery() {
   gsap.fromTo(
