@@ -16,6 +16,7 @@ import GallerySectionControl from "./GallerySectionControl.vue";
 import GallerySectionLayoutGrid from "./GallerySectionLayoutGrid.vue";
 
 import { onMounted } from "vue";
+import { useRoute } from "vue-router";
 import { useGalleryStore } from "@/stores/GalleryStore.js";
 import { storeToRefs } from "pinia";
 
@@ -23,7 +24,8 @@ const galleryStore = useGalleryStore();
 const { galleryData } = storeToRefs(galleryStore);
 
 onMounted(() => {
-  galleryStore.getGalleryData();
+  const route = useRoute();
+  galleryStore.getGalleryData(route.query.preview);
 });
 </script>
 

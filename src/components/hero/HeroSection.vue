@@ -22,6 +22,8 @@ import HeroSectionText from "./HeroSectionText.vue";
 import HeroSectionCues from "./HeroSectionCues.vue";
 
 import { onMounted } from "vue";
+import { useRoute } from "vue-router";
+
 import { useBannerStore } from "@/stores/BannerStore.js";
 import { storeToRefs } from "pinia";
 
@@ -29,7 +31,8 @@ const bannerStore = useBannerStore();
 const { bannerData } = storeToRefs(bannerStore);
 
 onMounted(() => {
-  bannerStore.getBannerData();
+  const route = useRoute();
+  bannerStore.getBannerData(route.query.preview);
 });
 </script>
 
