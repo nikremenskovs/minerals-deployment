@@ -1,10 +1,10 @@
 <template>
   <div class="control-gallery">
-    <div class="view-gallery" @click="viewGallery">
-      <h2 class="view-gallery__heading">gallery</h2>
-      <div class="view-gallery__subheading">view gallery</div>
-    </div>
-    <div
+    <button class="view-gallery" @click="viewGallery">
+      <p class="view-gallery__heading">gallery</p>
+      <p class="view-gallery__subheading">view gallery</p>
+    </button>
+    <button
       class="close-gallery"
       @click="closeGallery"
       @mouseenter="hoverClose"
@@ -14,7 +14,7 @@
         <img src="@/assets/images/close.png" class="close-gallery__one" />
         <img src="@/assets/images/close.png" class="close-gallery__two" />
       </div>
-    </div>
+    </button>
   </div>
 </template>
 
@@ -84,19 +84,21 @@ onUnmounted(() => {
 <style scoped lang="scss">
 @import "@/styles/_mixins.scss";
 .control-gallery {
-  font-family: sans-serif;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: white;
-  text-transform: capitalize;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 .view-gallery {
+  font-family: sans-serif;
+  color: white;
+  text-transform: capitalize;
+  background-color: transparent;
+  border: none;
   cursor: pointer;
   &__heading {
     font-size: 2rem;
@@ -105,13 +107,15 @@ onUnmounted(() => {
   &__subheading {
     padding: 5px 10px;
     background-color: black;
+    margin: 0;
+    font-size: 1rem;
   }
 }
 .close-gallery {
   @include positioning(absolute, 40px, 40px);
-  top: 50%;
-  transform: translateY(-50%);
   background-color: black;
+  border: none;
+  padding: 0;
   border-radius: 50%;
   scale: 0;
   cursor: pointer;

@@ -24,7 +24,8 @@ import GallerySectionLayoutGrid from "./GallerySectionLayoutGrid.vue";
   width: 100%;
   height: 100%;
   display: flex;
-  border: solid 1px hsla(0, 0%, 100%, 0.2);
+  border-top: solid 1px hsla(0, 0%, 100%, 0.2);
+  border-bottom: solid 1px hsla(0, 0%, 100%, 0.2);
   box-sizing: border-box;
   &__quarter {
     height: 100%;
