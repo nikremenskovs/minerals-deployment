@@ -3,10 +3,12 @@
     <div class="background-grid">
       <div v-for="n in 4" :key="n" class="background-grid__quarter" />
     </div>
-    <GallerySectionLayoutGrid :galleryImages="galleryData.galleryImages" />
+    <GallerySectionLayoutGrid
+      :galleryImages="props.galleryData.galleryImages"
+    />
     <GallerySectionControl
-      :galleryHeading="galleryData.galleryHeading"
-      :gallerySubheading="galleryData.gallerySubheading"
+      :galleryHeading="props.galleryData.galleryHeading"
+      :gallerySubheading="props.galleryData.gallerySubheading"
     />
   </section>
 </template>
@@ -15,17 +17,8 @@
 import GallerySectionControl from "./GallerySectionControl.vue";
 import GallerySectionLayoutGrid from "./GallerySectionLayoutGrid.vue";
 
-import { onMounted } from "vue";
-import { useRoute } from "vue-router";
-import { useGalleryStore } from "@/stores/GalleryStore.js";
-import { storeToRefs } from "pinia";
-
-const galleryStore = useGalleryStore();
-const { galleryData } = storeToRefs(galleryStore);
-
-onMounted(() => {
-  const route = useRoute();
-  galleryStore.getGalleryData(route.query.preview);
+const props = defineProps({
+  galleryData: { type: Object, required: true },
 });
 </script>
 

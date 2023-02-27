@@ -14,14 +14,8 @@ const props = defineProps({
   foreground: { type: String, required: true },
   background: { type: String, required: true },
 });
-const foregroundImg = computed(
-  () =>
-    `url('https://cloud.squidex.io/api/assets/minerals-squidex/${props.foreground}')`
-);
-const backgroundImg = computed(
-  () =>
-    `url('https://cloud.squidex.io/api/assets/minerals-squidex/${props.background}')`
-);
+const foregroundImg = computed(() => `url(${props.foreground})`);
+const backgroundImg = computed(() => `url('${props.background})`);
 
 function backgroundAnimation() {
   gsap.fromTo(

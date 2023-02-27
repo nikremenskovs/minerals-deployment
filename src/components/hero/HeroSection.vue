@@ -2,14 +2,14 @@
   <section class="hero">
     <div class="hero--sticky">
       <HeroSectionBackground
-        :foreground="bannerData.foreground"
-        :background="bannerData.background"
+        :foreground="props.bannerData.foreground"
+        :background="props.bannerData.background"
       />
       <HeroSectionText
-        :titleHeading="bannerData.titleHeading"
-        :titleSubheading="bannerData.titleSubheading"
-        :infoHeading="bannerData.infoHeading"
-        :infoDescription="bannerData.infoDescription"
+        :titleHeading="props.bannerData.titleHeading"
+        :titleSubheading="props.bannerData.titleSubheading"
+        :infoHeading="props.bannerData.infoHeading"
+        :infoDescription="props.bannerData.infoDescription"
       />
       <HeroSectionCues :cueScrollImage="bannerData.scrollCue" />
     </div>
@@ -21,18 +21,8 @@ import HeroSectionBackground from "./HeroSectionBackground.vue";
 import HeroSectionText from "./HeroSectionText.vue";
 import HeroSectionCues from "./HeroSectionCues.vue";
 
-import { onMounted } from "vue";
-import { useRoute } from "vue-router";
-
-import { useBannerStore } from "@/stores/BannerStore.js";
-import { storeToRefs } from "pinia";
-
-const bannerStore = useBannerStore();
-const { bannerData } = storeToRefs(bannerStore);
-
-onMounted(() => {
-  const route = useRoute();
-  bannerStore.getBannerData(route.query.preview);
+const props = defineProps({
+  bannerData: { type: Object, required: true },
 });
 </script>
 

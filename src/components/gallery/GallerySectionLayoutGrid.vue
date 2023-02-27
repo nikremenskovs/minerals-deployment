@@ -14,52 +14,17 @@ const props = defineProps({
   galleryImages: { type: Array, required: true },
 });
 
-const image1 = computed(
-  () =>
-    `url('https://cloud.squidex.io/api/assets/minerals-squidex/${props.galleryImages[0]}')`
-);
-
-const image2 = computed(
-  () =>
-    `url('https://cloud.squidex.io/api/assets/minerals-squidex/${props.galleryImages[1]}')`
-);
-
-const image3 = computed(
-  () =>
-    `url('https://cloud.squidex.io/api/assets/minerals-squidex/${props.galleryImages[2]}')`
-);
-const image4 = computed(
-  () =>
-    `url('https://cloud.squidex.io/api/assets/minerals-squidex/${props.galleryImages[3]}')`
-);
-const image5 = computed(
-  () =>
-    `url('https://cloud.squidex.io/api/assets/minerals-squidex/${props.galleryImages[4]}')`
-);
-const image6 = computed(
-  () =>
-    `url('https://cloud.squidex.io/api/assets/minerals-squidex/${props.galleryImages[5]}')`
-);
-const image7 = computed(
-  () =>
-    `url('https://cloud.squidex.io/api/assets/minerals-squidex/${props.galleryImages[6]}')`
-);
-const image8 = computed(
-  () =>
-    `url('https://cloud.squidex.io/api/assets/minerals-squidex/${props.galleryImages[7]}')`
-);
-const image9 = computed(
-  () =>
-    `url('https://cloud.squidex.io/api/assets/minerals-squidex/${props.galleryImages[8]}')`
-);
-const image10 = computed(
-  () =>
-    `url('https://cloud.squidex.io/api/assets/minerals-squidex/${props.galleryImages[9]}')`
-);
-const image11 = computed(
-  () =>
-    `url('https://cloud.squidex.io/api/assets/minerals-squidex/${props.galleryImages[10]}')`
-);
+const image1 = computed(() => `url(${props.galleryImages[0]})`);
+const image2 = computed(() => `url(${props.galleryImages[1]})`);
+const image3 = computed(() => `url(${props.galleryImages[2]})`);
+const image4 = computed(() => `url(${props.galleryImages[3]})`);
+const image5 = computed(() => `url(${props.galleryImages[4]})`);
+const image6 = computed(() => `url(${props.galleryImages[5]})`);
+const image7 = computed(() => `url(${props.galleryImages[6]})`);
+const image8 = computed(() => `url(${props.galleryImages[7]})`);
+const image9 = computed(() => `url(${props.galleryImages[8]})`);
+const image10 = computed(() => `url(${props.galleryImages[9]})`);
+const image11 = computed(() => `url(${props.galleryImages[10]})`);
 function opacityGallery() {
   gsap.fromTo(
     ".view-gallery",
