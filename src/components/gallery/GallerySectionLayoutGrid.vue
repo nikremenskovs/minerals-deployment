@@ -71,6 +71,7 @@ onUnmounted(() => {
 
 <style scoped lang="scss">
 @import "@/styles/_mixins.scss";
+
 .layout-grid {
   @include positioning(absolute, 100%, 100%);
   display: grid;
@@ -84,38 +85,16 @@ onUnmounted(() => {
     object-fit: cover;
     object-position: 50% 50%;
   }
-  &__0 {
-    @include galleryGridImage(1 / span 2, 1 / span 3, 0.2, _, _);
-  }
-  &__1 {
-    @include galleryGridImage(1 / span 2, 4 / span 1, 0.4, -200%, 0);
-  }
-  &__2 {
-    @include galleryGridImage(1 / span 1, 5 / span 1, 1, 0, 100%);
-  }
-  &__3 {
-    @include galleryGridImage(2 / span 1, 5 / span 1, 0.8, -75%, -50%);
-  }
-  &__4 {
-    @include galleryGridImage(1 / span 2, 6 / span 3, 0.7, 0, 75%);
-  }
-  &__5 {
-    @include galleryGridImage(3 / span 2, 1 / span 2, 0.6, 75%, 0);
-  }
-  &__6 {
-    @include galleryGridImage(3 / span 5, 3 / span 3, 0.5, _, _);
-  }
-  &__7 {
-    @include galleryGridImage(3 / span 4, 6 / span 3, 0.4, _, _);
-  }
-  &__8 {
-    @include galleryGridImage(5 / span 3, 1 / span 2, 0.2, _, _);
-  }
-  &__9 {
-    @include galleryGridImage(7 / span 1, 6 / span 1, 1, 0, -75%);
-  }
-  &__10 {
-    @include galleryGridImage(7 / span 1, 7 / span 2, 0.6, _, _);
+  @for $n from 0 through 10 {
+    &__#{$n} {
+      @include galleryGridImage(
+        nth(map-get($galleryGridImageMap, image#{$n}), 1),
+        nth(map-get($galleryGridImageMap, image#{$n}), 2),
+        nth(map-get($galleryGridImageMap, image#{$n}), 3),
+        nth(map-get($galleryGridImageMap, image#{$n}), 4),
+        nth(map-get($galleryGridImageMap, image#{$n}), 5)
+      );
+    }
   }
 }
 </style>
