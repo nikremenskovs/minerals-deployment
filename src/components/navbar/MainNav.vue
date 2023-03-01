@@ -13,7 +13,7 @@
         </router-link>
       </li>
       <li class="main-nav__item">
-        <router-link class="main-nav__link" to="#sectionFour">four</router-link>
+        <router-link class="main-nav__link" to="#gallery">gallery</router-link>
       </li>
     </ul>
     <MainNavDot />

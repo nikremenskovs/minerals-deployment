@@ -20,7 +20,7 @@ import HeroSectionCues from "./HeroSectionCues.vue";
 </script>
 
 <style scoped lang="scss">
-@import "../../styles/_mixins.scss";
+@import "@/styles/_mixins.scss";
 
 .hero {
   @include positioning(relative, 100%, 260vh);

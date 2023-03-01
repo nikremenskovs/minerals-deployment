@@ -58,7 +58,7 @@ function dotAnimation() {
     { x: "62.5%" },
     {
       scrollTrigger: {
-        trigger: "#sectionFour",
+        trigger: "#gallery",
         start: "top 75%",
         end: "top top",
         scrub: 0.5,
