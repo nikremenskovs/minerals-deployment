@@ -1,11 +1,33 @@
 <template>
-  <div class="layout-grid">
-    <div v-for="n in 11" :key="n" :class="`layout-grid__${n}`"></div>
+  <div class="layout-grid" @scaleGallery="scaleGallery">
+    <picture
+      v-for="(image, index) in props.galleryImages"
+      :key="index"
+      :class="`layout-grid__${index}`"
+    >
+      <!-- <source
+        srcset="
+          https://cloud.squidex.io/api/assets/minerals-squidex/4c5c1a5e-0107-4b86-9e47-5276e3c784da?width=500
+        "
+        media="(min-width: 768px)"
+      />
+      <source
+        srcset="
+          https://cloud.squidex.io/api/assets/minerals-squidex/2c12096d-f741-438c-a9fb-c0d555f41bf0?width=768
+        "
+        media="(min-width: 320px)"
+      /> -->
+      <img
+        class="layout-grid__image"
+        :src="image"
+        :alt="`gallery image ${index}`"
+      />
+    </picture>
   </div>
 </template>
 
 <script setup>
-import { onMounted, onUnmounted, computed } from "vue";
+import { onMounted, onUnmounted } from "vue";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
@@ -14,17 +36,6 @@ const props = defineProps({
   galleryImages: { type: Array, required: true },
 });
 
-const image1 = computed(() => `url(${props.galleryImages[0]})`);
-const image2 = computed(() => `url(${props.galleryImages[1]})`);
-const image3 = computed(() => `url(${props.galleryImages[2]})`);
-const image4 = computed(() => `url(${props.galleryImages[3]})`);
-const image5 = computed(() => `url(${props.galleryImages[4]})`);
-const image6 = computed(() => `url(${props.galleryImages[5]})`);
-const image7 = computed(() => `url(${props.galleryImages[6]})`);
-const image8 = computed(() => `url(${props.galleryImages[7]})`);
-const image9 = computed(() => `url(${props.galleryImages[8]})`);
-const image10 = computed(() => `url(${props.galleryImages[9]})`);
-const image11 = computed(() => `url(${props.galleryImages[10]})`);
 function opacityGallery() {
   gsap.fromTo(
     ".view-gallery",
@@ -41,8 +52,8 @@ function opacityGallery() {
       delay: 0.5,
     }
   );
-  for (let n = 1; n <= 11; n++) {
-    gsap.to(`.layout-grid__${n}`, {
+  props.galleryImages.forEach((image, index) => {
+    gsap.to(`.layout-grid__${index}`, {
       scrollTrigger: {
         trigger: ".gallery",
         start: "top center",
@@ -50,10 +61,10 @@ function opacityGallery() {
         toggleActions: "play none none none",
       },
       opacity: 1,
-      delay: n / 100 + Math.random(),
-      duration: n / 100 + Math.random() + 3,
+      delay: index / 100 + Math.random(),
+      duration: index / 100 + Math.random() + 3,
     });
-  }
+  });
 }
 
 onMounted(() => {
@@ -72,51 +83,46 @@ onUnmounted(() => {
   display: grid;
   top: 0;
   grid-gap: 0.25rem;
-  grid-template: repeat(7, 1fr) repeat(8, 1fr);
-
-  &__1 {
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(7, 1fr);
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+  }
+  &__0 {
     @include galleryGridImage(1 / span 2, 1 / span 3, 0.2, _, _);
-    background-image: v-bind(image1);
+  }
+  &__1 {
+    @include galleryGridImage(1 / span 2, 4 / span 1, 0.4, -400%, 0);
   }
   &__2 {
-    @include galleryGridImage(1 / span 2, 4 / span 1, 0.4, -400%, 0);
-    background-image: v-bind(image2);
+    @include galleryGridImage(1 / span 1, 5 / span 1, 1, 0, 100%);
   }
   &__3 {
-    @include galleryGridImage(1 / span 1, 5 / span 1, 1, 0, 100%);
-    background-image: v-bind(image3);
+    @include galleryGridImage(2 / span 1, 5 / span 1, 0.8, -75%, -50%);
   }
   &__4 {
-    @include galleryGridImage(2 / span 1, 5 / span 1, 0.8, -75%, -50%);
-    background-image: v-bind(image4);
+    @include galleryGridImage(1 / span 2, 6 / span 3, 0.7, 0, 75%);
   }
   &__5 {
-    @include galleryGridImage(1 / span 2, 6 / span 3, 0.7, 0, 75%);
-    background-image: v-bind(image5);
+    @include galleryGridImage(3 / span 2, 1 / span 2, 0.6, 150%, 0);
   }
   &__6 {
-    @include galleryGridImage(3 / span 2, 1 / span 2, 0.6, 150%, 0);
-    background-image: v-bind(image6);
+    @include galleryGridImage(3 / span 5, 3 / span 3, 0.5, _, _);
   }
   &__7 {
-    @include galleryGridImage(3 / span 5, 3 / span 3, 0.5, _, _);
-    background-image: v-bind(image7);
+    @include galleryGridImage(3 / span 4, 6 / span 3, 0.4, _, _);
   }
   &__8 {
-    @include galleryGridImage(3 / span 4, 6 / span 3, 0.4, _, _);
-    background-image: v-bind(image8);
+    @include galleryGridImage(5 / span 3, 1 / span 2, 0.2, _, _);
   }
   &__9 {
-    @include galleryGridImage(5 / span 3, 1 / span 2, 0.2, _, _);
-    background-image: v-bind(image9);
+    @include galleryGridImage(7 / span 1, 6 / span 1, 1, 0, -75%);
   }
   &__10 {
-    @include galleryGridImage(7 / span 1, 6 / span 1, 1, 0, -75%);
-    background-image: v-bind(image10);
-  }
-  &__11 {
     @include galleryGridImage(7 / span 1, 7 / span 2, 0.6, _, _);
-    background-image: v-bind(image11);
   }
 }
 </style>

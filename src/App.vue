@@ -1,5 +1,7 @@
 <template>
-  <RouterView />
+  <Suspense>
+    <RouterView />
+  </Suspense>
 </template>
 
 <style lang="scss">

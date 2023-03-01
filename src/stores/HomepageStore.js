@@ -49,6 +49,7 @@ export const useHomepageStore = defineStore("HomepageStore", {
       galleryData.galleryImages.forEach((image) =>
         this.gallery.galleryImages.push(image)
       );
+      return { bannerData: this.banner, galleryData: this.gallery };
     },
   },
 });
