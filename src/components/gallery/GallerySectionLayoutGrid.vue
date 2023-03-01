@@ -5,18 +5,11 @@
       :key="index"
       :class="`layout-grid__${index}`"
     >
-      <!-- <source
-        srcset="
-          https://cloud.squidex.io/api/assets/minerals-squidex/4c5c1a5e-0107-4b86-9e47-5276e3c784da?width=500
-        "
-        media="(min-width: 768px)"
-      />
-      <source
-        srcset="
-          https://cloud.squidex.io/api/assets/minerals-squidex/2c12096d-f741-438c-a9fb-c0d555f41bf0?width=768
-        "
-        media="(min-width: 320px)"
-      /> -->
+      <source :srcset="image + '?width=max'" media="(min-width: 1440px)" />
+      <source :srcset="image + '?width=1440'" media="(min-width: 1024px)" />
+      <source :srcset="image + '?width=1024'" media="(min-width: 768px)" />
+      <source :srcset="image + '?width=768'" media="(min-width: 425px)" />
+      <source :srcset="image + '?width=425'" media="(min-width: 320px)" />
       <img
         class="layout-grid__image"
         :src="image"
@@ -95,7 +88,7 @@ onUnmounted(() => {
     @include galleryGridImage(1 / span 2, 1 / span 3, 0.2, _, _);
   }
   &__1 {
-    @include galleryGridImage(1 / span 2, 4 / span 1, 0.4, -400%, 0);
+    @include galleryGridImage(1 / span 2, 4 / span 1, 0.4, -200%, 0);
   }
   &__2 {
     @include galleryGridImage(1 / span 1, 5 / span 1, 1, 0, 100%);
@@ -107,7 +100,7 @@ onUnmounted(() => {
     @include galleryGridImage(1 / span 2, 6 / span 3, 0.7, 0, 75%);
   }
   &__5 {
-    @include galleryGridImage(3 / span 2, 1 / span 2, 0.6, 150%, 0);
+    @include galleryGridImage(3 / span 2, 1 / span 2, 0.6, 75%, 0);
   }
   &__6 {
     @include galleryGridImage(3 / span 5, 3 / span 3, 0.5, _, _);
