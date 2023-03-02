@@ -1,26 +1,19 @@
 <template>
   <div class="layout-grid" @scaleGallery="scaleGallery">
-    <picture
+    <ResponsiveImage
       v-for="(image, index) in props.galleryImages"
-      :key="image"
+      :key="index"
       :class="`layout-grid__${index}`"
-    >
-      <source
-        :srcset="`${image.image}?width=max`"
-        media="(min-width: 1440px)"
-      />
-      <source
-        :srcset="`${image.image}?width=1440`"
-        media="(min-width: 1024px)"
-      />
-      <source
-        :srcset="`${image.image}?width=1024`"
-        media="(min-width: 768px)"
-      />
-      <source :srcset="`${image.image}?width=768`" media="(min-width: 425px)" />
-      <source :srcset="`${image.image}?width=425`" media="(min-width: 320px)" />
-      <img class="layout-grid__image" :src="image.image" :alt="image.altText" />
-    </picture>
+      :imgSrc="image.image[0]"
+      :imgAlt="image.altText"
+      :sourcesMap="[
+        { assetWidth: 'max', media: '1440px' },
+        { assetWidth: '1440', media: '1024px' },
+        { assetWidth: '1024', media: '768px' },
+        { assetWidth: '768', media: '425px' },
+        { assetWidth: '425', media: '320px' },
+      ]"
+    />
   </div>
 </template>
 
