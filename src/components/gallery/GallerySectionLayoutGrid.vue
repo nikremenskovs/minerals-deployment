@@ -2,19 +2,24 @@
   <div class="layout-grid" @scaleGallery="scaleGallery">
     <picture
       v-for="(image, index) in props.galleryImages"
-      :key="index"
+      :key="image"
       :class="`layout-grid__${index}`"
     >
-      <source :srcset="image + '?width=max'" media="(min-width: 1440px)" />
-      <source :srcset="image + '?width=1440'" media="(min-width: 1024px)" />
-      <source :srcset="image + '?width=1024'" media="(min-width: 768px)" />
-      <source :srcset="image + '?width=768'" media="(min-width: 425px)" />
-      <source :srcset="image + '?width=425'" media="(min-width: 320px)" />
-      <img
-        class="layout-grid__image"
-        :src="image"
-        :alt="`gallery image ${index}`"
+      <source
+        :srcset="`${image.image}?width=max`"
+        media="(min-width: 1440px)"
       />
+      <source
+        :srcset="`${image.image}?width=1440`"
+        media="(min-width: 1024px)"
+      />
+      <source
+        :srcset="`${image.image}?width=1024`"
+        media="(min-width: 768px)"
+      />
+      <source :srcset="`${image.image}?width=768`" media="(min-width: 425px)" />
+      <source :srcset="`${image.image}?width=425`" media="(min-width: 320px)" />
+      <img class="layout-grid__image" :src="image.image" :alt="image.altText" />
     </picture>
   </div>
 </template>

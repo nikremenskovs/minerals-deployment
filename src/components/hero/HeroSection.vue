@@ -2,16 +2,16 @@
   <section class="hero">
     <div class="hero--sticky">
       <HeroSectionBackground
-        :foreground="props.bannerData.foreground"
-        :background="props.bannerData.background"
+        :foreground="props.foreground"
+        :background="props.background"
       />
       <HeroSectionText
-        :titleHeading="props.bannerData.titleHeading"
-        :titleSubheading="props.bannerData.titleSubheading"
-        :infoHeading="props.bannerData.infoHeading"
-        :infoDescription="props.bannerData.infoDescription"
+        :titleHeading="props.titleHeading"
+        :titleSubheading="props.titleSubheading"
+        :infoHeading="props.infoHeading"
+        :infoDescription="props.infoDescription"
       />
-      <HeroSectionCues :cueScrollImage="bannerData.scrollCue" />
+      <HeroSectionCues :scrollCue="props.scrollCue" />
     </div>
   </section>
 </template>
@@ -22,7 +22,13 @@ import HeroSectionText from "./HeroSectionText.vue";
 import HeroSectionCues from "./HeroSectionCues.vue";
 
 const props = defineProps({
-  bannerData: { type: Object, required: true },
+  foreground: { type: Object, required: true },
+  background: { type: Object, required: true },
+  titleHeading: { type: String, required: true },
+  titleSubheading: { type: String, required: true },
+  infoHeading: { type: String, required: true },
+  infoDescription: { type: String, required: true },
+  scrollCue: { type: Object, required: true },
 });
 </script>
 

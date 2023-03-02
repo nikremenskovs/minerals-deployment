@@ -8,9 +8,9 @@ export const useHomepageStore = defineStore("HomepageStore", {
       titleSubheading: "",
       infoHeading: "",
       infoDescription: "",
-      background: "",
-      foreground: "",
-      scrollCue: "",
+      background: {},
+      foreground: {},
+      scrollCue: {},
     },
     gallery: {
       galleryHeading: "",
@@ -30,7 +30,7 @@ export const useHomepageStore = defineStore("HomepageStore", {
         headers["X-Unpublished"] = 1;
       }
       const response = await axios.get(
-        "https://cloud.squidex.io/api/content/minerals-squidex/homepage/bc15e44e-994d-4965-930a-dfbcf5f230ac",
+        "https://cloud.squidex.io/api/content/minerals-squidex/homepage/bc15e44e-994d-4965-930a-dfbcf5f230ac/",
         {
           headers: headers,
         }
@@ -41,9 +41,9 @@ export const useHomepageStore = defineStore("HomepageStore", {
       this.banner.titleSubheading = bannerData.titleSubheading;
       this.banner.infoHeading = bannerData.infoHeading;
       this.banner.infoDescription = bannerData.infoDescription;
-      this.banner.background = bannerData.background[0];
-      this.banner.foreground = bannerData.foreground[0];
-      this.banner.scrollCue = bannerData.scrollCue[0];
+      this.banner.background = bannerData.background;
+      this.banner.foreground = bannerData.foreground;
+      this.banner.scrollCue = bannerData.scrollCue;
       this.gallery.galleryHeading = galleryData.galleryHeading;
       this.gallery.gallerySubheading = galleryData.gallerySubheading;
       galleryData.galleryImages.forEach((image) =>

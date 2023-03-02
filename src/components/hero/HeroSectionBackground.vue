@@ -11,11 +11,11 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const props = defineProps({
-  foreground: { type: String, required: true },
-  background: { type: String, required: true },
+  foreground: { type: Object, required: true },
+  background: { type: Object, required: true },
 });
-const foregroundImg = computed(() => `url(${props.foreground})`);
-const backgroundImg = computed(() => `url('${props.background})`);
+const foregroundImg = computed(() => `url(${props.foreground.image})`);
+const backgroundImg = computed(() => `url('${props.background.image})`);
 
 function backgroundAnimation() {
   gsap.fromTo(

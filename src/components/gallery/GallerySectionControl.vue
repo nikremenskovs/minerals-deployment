@@ -1,8 +1,8 @@
 <template>
   <div class="control-gallery">
     <button class="view-gallery" @click="viewGallery">
-      <p class="view-gallery__heading">gallery</p>
-      <p class="view-gallery__subheading">view gallery</p>
+      <p class="view-gallery__heading">{{ props.galleryHeading }}</p>
+      <p class="view-gallery__subheading">{{ props.gallerySubheading }}</p>
     </button>
     <button
       class="close-gallery"

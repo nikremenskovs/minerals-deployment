@@ -1,5 +1,9 @@
 <template>
-  <img class="cue__scroll" :src="props.cueScrollImage" />
+  <img
+    class="cue__scroll"
+    :src="props.scrollCue.image"
+    :alt="props.scrollCue.altText"
+  />
   <div class="cue__line">
     <div class="cue__line--scroll"></div>
   </div>
@@ -12,7 +16,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const props = defineProps({
-  cueScrollImage: { type: String, required: false },
+  scrollCue: { type: Object, required: false },
 });
 
 function cuesAnimation() {
