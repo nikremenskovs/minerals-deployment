@@ -31,7 +31,7 @@ import { useHomepageStore } from "@/stores/HomepageStore.js";
 
 const homepageStore = useHomepageStore();
 const route = useRoute();
-const homepageData = await homepageStore.getHomepageData(route.query.preview);
+const homepageData = await homepageStore.makeRequest(route.query.preview);
 </script>
 
 <style scoped>
