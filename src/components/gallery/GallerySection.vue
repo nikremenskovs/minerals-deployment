@@ -3,14 +3,23 @@
     <div class="background-grid">
       <div v-for="n in 4" :key="n" class="background-grid__quarter" />
     </div>
-    <GallerySectionLayoutGrid />
-    <GallerySectionControl />
+    <GallerySectionLayoutGrid :galleryImages="props.galleryImages" />
+    <GallerySectionControl
+      :galleryHeading="props.galleryHeading"
+      :gallerySubheading="props.gallerySubheading"
+    />
   </section>
 </template>
 
 <script setup>
 import GallerySectionControl from "./GallerySectionControl.vue";
 import GallerySectionLayoutGrid from "./GallerySectionLayoutGrid.vue";
+
+const props = defineProps({
+  galleryImages: { type: Array, required: true },
+  galleryHeading: { type: String, required: true },
+  gallerySubheading: { type: String, required: true },
+});
 </script>
 
 <style scoped lang="scss">

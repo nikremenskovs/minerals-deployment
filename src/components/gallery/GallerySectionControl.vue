@@ -1,8 +1,8 @@
 <template>
   <div class="control-gallery">
     <button class="view-gallery" @click="viewGallery">
-      <p class="view-gallery__heading">gallery</p>
-      <p class="view-gallery__subheading">view gallery</p>
+      <p class="view-gallery__heading">{{ props.galleryHeading }}</p>
+      <p class="view-gallery__subheading">{{ props.gallerySubheading }}</p>
     </button>
     <button
       class="close-gallery"
@@ -22,16 +22,36 @@
 import { onMounted, onUnmounted } from "vue";
 import { gsap } from "gsap";
 
-const galleryTimeline = gsap.timeline({ paused: true });
-const controlsTimeline = gsap.timeline({ paused: true });
-const backgroundTimeline = gsap.timeline({ paused: true });
-const hoverCloseTimeline = gsap.timeline({ paused: true });
+const props = defineProps({
+  galleryHeading: { type: String, required: true },
+  gallerySubheading: { type: String, required: true },
+});
+
+const galleryTimeline = gsap.timeline();
+const controlsTimeline = gsap.timeline();
+const backgroundTimeline = gsap.timeline();
+const hoverCloseTimeline = gsap.timeline();
 
 function viewGallery() {
-  galleryTimeline.play();
-  controlsTimeline.play();
-  backgroundTimeline.play();
+  for (let n = 0; n < 11; n++) {
+    galleryTimeline
+      .to(`.layout-grid__${n}`, { scale: 1, x: 0, y: 0, ease: "none" }, 0)
+      .play();
+  }
+  backgroundTimeline
+    .to(
+      ".background-grid__quarter",
+      { height: "0%", duration: 0.5, ease: "circ" },
+      0
+    )
+    .play();
+  controlsTimeline
+    .to(".view-gallery", { opacity: 0, display: "none", ease: "circ" }, 0)
+    .to(".close-gallery", { scale: 1, ease: "expo" })
+    .to(".close-gallery", { y: "35vh", delay: 0.25 })
+    .play();
 }
+
 function closeGallery() {
   galleryTimeline.reverse();
   controlsTimeline.reverse();
@@ -43,34 +63,7 @@ function hoverClose() {
 }
 
 onMounted(() => {
-  backgroundTimeline.to(
-    ".background-grid__quarter",
-    { height: "0%", duration: 0.5, ease: "circ" },
-    0
-  );
-  controlsTimeline
-    .to(".view-gallery", { opacity: 0, display: "none", ease: "circ" }, 0)
-    .to(".close-gallery", { scale: 1, ease: "expo" })
-    .to(".close-gallery", { y: "35vh", delay: 0.25 })
-    .reverse();
-
-  galleryTimeline
-    .to(".layout-grid__1", { scale: 1, ease: "none" }, 0)
-    .to(".layout-grid__2", { scale: 1, x: 0, ease: "none" }, 0)
-    .to(".layout-grid__3", { y: 0, ease: "none" }, 0)
-    .to(".layout-grid__4", { scale: 1, x: 0, y: 0, ease: "none" }, 0)
-    .to(".layout-grid__5", { scale: 1, y: 0, ease: "none" }, 0)
-    .to(".layout-grid__6", { scale: 1, x: 0, ease: "none" }, 0)
-    .to(".layout-grid__7", { scale: 1, ease: "none" }, 0)
-    .to(".layout-grid__8", { scale: 1, ease: "none" }, 0)
-    .to(".layout-grid__9", { scale: 1, ease: "none" }, 0)
-    .to(".layout-grid__10", { y: 0, ease: "none" }, 0)
-    .to(".layout-grid__11", { scale: 1, ease: "none" }, 0)
-    .reverse();
-
-  hoverCloseTimeline
-    .to(".close-gallery--hover", { y: "-75%", duration: 0.25 })
-    .reverse();
+  hoverCloseTimeline.to(".close-gallery--hover", { y: "-75%", duration: 0.25 });
 });
 
 onUnmounted(() => {

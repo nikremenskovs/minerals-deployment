@@ -2,13 +2,16 @@
   <section class="hero">
     <div class="hero--sticky">
       <HeroSectionBackground
-        foreground="foreground.png"
-        background="background.jpg"
+        :foreground="props.foreground"
+        :background="props.background"
       />
-      <HeroSectionText />
-      <HeroSectionCues
-        cueScrollImage="https://uploads-ssl.webflow.com/5cff83ac2044e22cb8cf2f11/5d00043816a6c695bcf1581a_scroll.gif"
+      <HeroSectionText
+        :titleHeading="props.titleHeading"
+        :titleSubheading="props.titleSubheading"
+        :infoHeading="props.infoHeading"
+        :infoDescription="props.infoDescription"
       />
+      <HeroSectionCues :scrollCue="props.scrollCue" />
     </div>
   </section>
 </template>
@@ -17,6 +20,16 @@
 import HeroSectionBackground from "./HeroSectionBackground.vue";
 import HeroSectionText from "./HeroSectionText.vue";
 import HeroSectionCues from "./HeroSectionCues.vue";
+
+const props = defineProps({
+  foreground: { type: Object, required: true },
+  background: { type: Object, required: true },
+  titleHeading: { type: String, required: true },
+  titleSubheading: { type: String, required: true },
+  infoHeading: { type: String, required: true },
+  infoDescription: { type: String, required: true },
+  scrollCue: { type: Object, required: true },
+});
 </script>
 
 <style scoped lang="scss">

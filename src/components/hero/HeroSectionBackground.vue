@@ -5,17 +5,17 @@
 </template>
 
 <script setup>
-import { onMounted, onUnmounted } from "vue";
+import { onMounted, onUnmounted, computed } from "vue";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const props = defineProps({
-  foreground: { type: String, required: true },
-  background: { type: String, required: true },
+  foreground: { type: Object, required: true },
+  background: { type: Object, required: true },
 });
-const foregroundImg = `url('src/assets/images/${props.foreground}')`;
-const backgroundImg = `url('src/assets/images/${props.background}')`;
+const foregroundImg = computed(() => `url(${props.foreground.image})`);
+const backgroundImg = computed(() => `url('${props.background.image})`);
 
 function backgroundAnimation() {
   gsap.fromTo(

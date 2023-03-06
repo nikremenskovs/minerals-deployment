@@ -1,17 +1,12 @@
 <template>
   <div class="title">
-    <h1 class="title__heading">Minerals</h1>
-    <h2 class="title__subheading">and more</h2>
+    <h1 class="title__heading">{{ props.titleHeading }}</h1>
+    <h2 class="title__subheading">{{ props.titleSubheading }}</h2>
   </div>
   <div class="info">
-    <h2 class="info__heading">why us?</h2>
+    <h2 class="info__heading">{{ props.infoHeading }}</h2>
     <p class="info__description">
-      You should buy minerals because they are beautiful, they appeal to you,
-      each one is unique, natural, and not man-made. Do not buy minerals as
-      investments - unless you have 20 years to wait for a return on your
-      investment. And definitely do not believe a mineral dealer if he advises
-      you to invest in minerals - the only person that will realize a profit is
-      the dealer.
+      {{ props.infoDescription }}
     </p>
   </div>
 </template>
@@ -21,6 +16,13 @@ import { onMounted, onUnmounted } from "vue";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
+
+const props = defineProps({
+  titleHeading: { type: String, required: true },
+  titleSubheading: { type: String, required: true },
+  infoHeading: { type: String, required: true },
+  infoDescription: { type: String, required: true },
+});
 
 function textAnimation() {
   gsap.fromTo(
