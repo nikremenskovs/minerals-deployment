@@ -1,5 +1,5 @@
 <template>
-  <div class="layout-grid" @scaleGallery="scaleGallery">
+  <div class="layout-grid">
     <ResponsiveImage
       v-for="(image, index) in props.galleryImages"
       :key="index"
@@ -39,7 +39,7 @@ function opacityGallery() {
         toggleActions: "play none none none",
       },
       opacity: 1,
-      duration: 3,
+      duration: 1,
       delay: 0.5,
     }
   );
@@ -77,12 +77,7 @@ onUnmounted(() => {
   grid-gap: 0.25rem;
   grid-template-columns: repeat(8, 1fr);
   grid-template-rows: repeat(7, 1fr);
-  &__image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: 50% 50%;
-  }
+
   @for $n from 0 through 10 {
     &__#{$n} {
       @include galleryGridImage(

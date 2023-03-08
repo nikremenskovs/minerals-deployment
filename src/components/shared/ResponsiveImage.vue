@@ -6,17 +6,26 @@
       :srcset="`${props.imgSrc}?width=${source.assetWidth}`"
       :media="`(min-width: ${source.media})`"
     />
-    <img class="responsive-position" :src="props.imgSrc" :alt="props.imgAlt" />
+    <img
+      class="responsive-position"
+      :class="
+        props.sectionTwoTriggerIndex !== null
+          ? `sectionTwoImage--${props.sectionTwoTriggerIndex}`
+          : ''
+      "
+      :src="props.imgSrc"
+      :alt="props.imgAlt"
+    />
   </picture>
 </template>
 
 <script setup>
 const props = defineProps({
+  sectionTwoTriggerIndex: { type: Number, required: false, default: null },
   imgSrc: { type: String, required: true },
   imgAlt: {
     type: String,
-    required: false,
-    default: "alternative text for the image",
+    required: true,
   },
   sourcesMap: {
     type: Array,
@@ -31,5 +40,6 @@ const props = defineProps({
   height: 100%;
   object-fit: cover;
   object-position: 50% 50%;
+  display: block;
 }
 </style>

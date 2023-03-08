@@ -25,3 +25,19 @@ $galleryGridImageMap: (
   "image9": (7 / span 1, 6 / span 1, 1, 0, -75%),
   "image10": (7 / span 1, 7 / span 2, 0.6, _, _),
 );
+
+@mixin sectionTwoSatelliteImage($opacity, $top, $left, $width, $maxWidth) {
+  opacity: $opacity;
+  top: $top;
+  left: $left;
+  width: $width;
+  max-width: $maxWidth;
+  position: absolute;
+}
+
+$sectionTwoSatelliteImageMap: (
+  "satellite0": (0.4, 40%, 15%, 20%, 160px),
+  "satellite1": (_, 70%, 25%, 30%, 175px),
+  "satellite2": (0.6, 15%, 70%, 20%, 160px),
+  "satellite3": (0.4, 65%, 70%, 20%, 160px),
+)

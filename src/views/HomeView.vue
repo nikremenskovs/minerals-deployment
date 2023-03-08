@@ -1,28 +1,19 @@
 <template>
   <main-nav />
-  <HeroSection
-    id="hero"
-    :foreground="homepageData.bannerData.foreground"
-    :background="homepageData.bannerData.background"
-    :titleHeading="homepageData.bannerData.titleHeading"
-    :titleSubheading="homepageData.bannerData.titleSubheading"
-    :infoHeading="homepageData.bannerData.infoHeading"
-    :infoDescription="homepageData.bannerData.infoDescription"
-    :scrollCue="homepageData.bannerData.scrollCue"
+  <HeroSection id="hero" v-bind="homepageData.bannerData" />
+  <SectionTwo
+    id="sectionTwo"
+    :cards="homepageData.sectionTwoCards"
+    :parallax="homepageData.sectionTwoParallax"
   />
-  <section id="sectionTwo" />
   <section id="sectionThree" />
-  <GallerySection
-    id="gallery"
-    :galleryImages="homepageData.galleryData.galleryImages"
-    :galleryHeading="homepageData.galleryData.galleryHeading"
-    :gallerySubheading="homepageData.galleryData.gallerySubheading"
-  />
+  <GallerySection id="gallery" v-bind="homepageData.galleryData" />
 </template>
 
 <script setup>
 import MainNav from "@/components/navbar/MainNav.vue";
 import HeroSection from "@/components/hero/HeroSection.vue";
+import SectionTwo from "@/components/sectionTwo/SectionTwo.vue";
 import GallerySection from "@/components/gallery/GallerySection.vue";
 
 import { useRoute } from "vue-router";
@@ -34,12 +25,7 @@ const route = useRoute();
 const homepageData = await homepageStore.makeRequest(route.query.preview);
 </script>
 
-<style scoped>
-#sectionTwo {
-  width: 100%;
-  height: 100vh;
-  background: yellow;
-}
+<style scoped lang="scss">
 #sectionThree {
   width: 100%;
   height: 100vh;

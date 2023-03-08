@@ -16,6 +16,14 @@ export const useHomepageStore = defineStore("HomepageStore", {
       foreground: {},
       scrollCue: {},
     },
+    sectionTwo: {
+      cards: [],
+      parallax: {
+        heading: "",
+        centrepiece: {},
+        satellites: [],
+      },
+    },
     gallery: {
       galleryHeading: "",
       gallerySubheading: "",
@@ -40,7 +48,7 @@ export const useHomepageStore = defineStore("HomepageStore", {
 
       let response = await this.getHomepageData(previewURL);
 
-      if (response.status == 401) {
+      if (response.status === 401) {
         token = await this.getTokenFromSquidex();
         this.storeTokenInCache(token, this.tokenExpiration);
 
@@ -104,19 +112,20 @@ export const useHomepageStore = defineStore("HomepageStore", {
         );
         const bannerData = response.data.data.banner.iv;
         const galleryData = response.data.data.gallery.en;
-        this.banner.titleHeading = bannerData.titleHeading;
-        this.banner.titleSubheading = bannerData.titleSubheading;
-        this.banner.infoHeading = bannerData.infoHeading;
-        this.banner.infoDescription = bannerData.infoDescription;
-        this.banner.background = bannerData.background;
-        this.banner.foreground = bannerData.foreground;
-        this.banner.scrollCue = bannerData.scrollCue;
-        this.gallery.galleryHeading = galleryData.galleryHeading;
-        this.gallery.gallerySubheading = galleryData.gallerySubheading;
-        galleryData.galleryImages.forEach((image) =>
-          this.gallery.galleryImages.push(image)
-        );
-        return { bannerData: this.banner, galleryData: this.gallery };
+        const sectionTwoCards =
+          response.data.data.sectionTwo.en.sectionTwoCards;
+        const sectionTwoParallax =
+          response.data.data.sectionTwo.en.sectionTwoParallax;
+        this.banner = bannerData;
+        this.gallery = galleryData;
+        this.sectionTwo.cards = sectionTwoCards;
+        this.sectionTwo.parallax = sectionTwoParallax;
+        return {
+          bannerData: this.banner,
+          galleryData: this.gallery,
+          sectionTwoCards: this.sectionTwo.cards,
+          sectionTwoParallax: this.sectionTwo.parallax,
+        };
       } catch (error) {
         console.log(error);
       }
