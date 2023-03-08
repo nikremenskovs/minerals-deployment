@@ -7,6 +7,15 @@ export const useHomepageStore = defineStore("HomepageStore", {
     clientId: "minerals-squidex:default",
     clientSecret: "qcnwculd9ujg9oalyygr0lyeqyxg4p9g4mehlhxyeeax",
     tokenExpiration: 2591999,
+    navigation: {
+      textColor: "",
+      headingOne: "",
+      headingTwo: "",
+      headingThree: "",
+      headingFour: "",
+      pulseIcon: [],
+      pulseIconSize: null,
+    },
     banner: {
       titleHeading: "",
       titleSubheading: "",
@@ -110,17 +119,20 @@ export const useHomepageStore = defineStore("HomepageStore", {
             headers: headers,
           }
         );
+        const navigationData = response.data.data.navigation.en;
         const bannerData = response.data.data.banner.iv;
         const galleryData = response.data.data.gallery.en;
         const sectionTwoCards =
           response.data.data.sectionTwo.en.sectionTwoCards;
         const sectionTwoParallax =
           response.data.data.sectionTwo.en.sectionTwoParallax;
+        this.navigation = navigationData;
         this.banner = bannerData;
         this.gallery = galleryData;
         this.sectionTwo.cards = sectionTwoCards;
         this.sectionTwo.parallax = sectionTwoParallax;
         return {
+          navigationData: this.navigation,
           bannerData: this.banner,
           galleryData: this.gallery,
           sectionTwoCards: this.sectionTwo.cards,
