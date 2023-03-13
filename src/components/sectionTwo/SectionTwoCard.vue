@@ -1,6 +1,5 @@
 <template>
   <router-link
-    :ref="box"
     :to="props.to"
     class="section-two-card"
     @mouseenter="hoverEnter(props.index)"
@@ -31,9 +30,7 @@
 <script setup>
 import { gsap } from "gsap";
 
-import { ref, onMounted } from "vue";
-
-const box = ref();
+import { onMounted } from "vue";
 
 let matchMedia = gsap.matchMedia();
 

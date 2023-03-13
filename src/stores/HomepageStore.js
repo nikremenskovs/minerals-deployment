@@ -24,6 +24,10 @@ export const useHomepageStore = defineStore("HomepageStore", {
         satellites: [],
       },
     },
+    reviews: {
+      reviewsImageCards: [],
+      reviewsTextCards: [],
+    },
     gallery: {
       galleryHeading: "",
       gallerySubheading: "",
@@ -111,20 +115,25 @@ export const useHomepageStore = defineStore("HomepageStore", {
           }
         );
         const bannerData = response.data.data.banner.iv;
-        const galleryData = response.data.data.gallery.en;
         const sectionTwoCards =
           response.data.data.sectionTwo.en.sectionTwoCards;
         const sectionTwoParallax =
           response.data.data.sectionTwo.en.sectionTwoParallax;
+        const reviewsData = response.data.data.reviews.iv;
+        const galleryData = response.data.data.gallery.en;
+
         this.banner = bannerData;
-        this.gallery = galleryData;
         this.sectionTwo.cards = sectionTwoCards;
         this.sectionTwo.parallax = sectionTwoParallax;
+        this.reviews = reviewsData;
+        this.gallery = galleryData;
+
         return {
           bannerData: this.banner,
-          galleryData: this.gallery,
           sectionTwoCards: this.sectionTwo.cards,
           sectionTwoParallax: this.sectionTwo.parallax,
+          reviewsData: this.reviews,
+          galleryData: this.gallery,
         };
       } catch (error) {
         console.log(error);

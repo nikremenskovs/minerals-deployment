@@ -8,9 +8,7 @@
         <router-link class="main-nav__link" to="#sectionTwo">two</router-link>
       </li>
       <li class="main-nav__item">
-        <router-link class="main-nav__link" to="#sectionThree">
-          three
-        </router-link>
+        <router-link class="main-nav__link" to="#reviews"> three </router-link>
       </li>
       <li class="main-nav__item">
         <router-link class="main-nav__link" to="#gallery">gallery</router-link>
@@ -28,7 +26,7 @@ import MainNavDot from "@/components/navbar/MainNavDot.vue";
 .main-nav {
   width: 100%;
   position: fixed;
-  z-index: 1;
+  z-index: 2;
   font-family: sans-serif;
   background-image: linear-gradient(
     180deg,

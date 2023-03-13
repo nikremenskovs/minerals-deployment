@@ -100,7 +100,7 @@ function sectionTwoParallaxAnimation() {
         scrub: 0.5,
         toggleActions: "restart none play reverse",
       },
-      y: "400%",
+      y: "380%",
       rotate: "-180deg",
     }
   );

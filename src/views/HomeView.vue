@@ -6,7 +6,13 @@
     :cards="homepageData.sectionTwoCards"
     :parallax="homepageData.sectionTwoParallax"
   />
-  <section id="sectionThree" />
+  <ReviewsSection
+    id="reviews"
+    :textCards="homepageData.reviewsData.reviewsTextCards"
+    :imageCards="homepageData.reviewsData.reviewsImageCards"
+    :parallaxBackground="homepageData.reviewsData.parallaxBackground"
+    :parallaxForeground="homepageData.reviewsData.parallaxForeground"
+  />
   <GallerySection id="gallery" v-bind="homepageData.galleryData" />
 </template>
 
@@ -14,6 +20,7 @@
 import MainNav from "@/components/navbar/MainNav.vue";
 import HeroSection from "@/components/hero/HeroSection.vue";
 import SectionTwo from "@/components/sectionTwo/SectionTwo.vue";
+import ReviewsSection from "@/components/reviews/ReviewsSection.vue";
 import GallerySection from "@/components/gallery/GallerySection.vue";
 
 import { useRoute } from "vue-router";
@@ -25,10 +32,4 @@ const route = useRoute();
 const homepageData = await homepageStore.makeRequest(route.query.preview);
 </script>
 
-<style scoped lang="scss">
-#sectionThree {
-  width: 100%;
-  height: 100vh;
-  background: orange;
-}
-</style>
+<style scoped lang="scss"></style>
