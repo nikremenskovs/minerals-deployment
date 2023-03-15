@@ -28,7 +28,7 @@ onMounted(() => {
       scrollTrigger: {
         trigger: ".reviewsSection-parallax",
         start: "top 50%",
-        end: "bottom centre",
+        end: "top top",
         toggleActions: "play none none reverse",
         scrub: true,
       },

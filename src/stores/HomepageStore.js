@@ -51,13 +51,6 @@ export const useHomepageStore = defineStore("HomepageStore", {
       }
 
       let response = await this.getHomepageData(previewURL);
-
-      if (response.status === 401) {
-        token = await this.getTokenFromSquidex();
-        this.storeTokenInCache(token, this.tokenExpiration);
-
-        response = await this.getHomepageData(previewURL);
-      }
       return response;
     },
     getTokenFromCache() {
