@@ -1,19 +1,25 @@
 <template>
-  <main-nav />
-  <HeroSection id="hero" v-bind="homepageData.bannerData" />
-  <SectionTwo
-    id="sectionTwo"
-    :cards="homepageData.sectionTwoCards"
-    :parallax="homepageData.sectionTwoParallax"
-  />
-  <ReviewsSection
-    id="reviews"
-    :textCards="homepageData.reviewsData.reviewsTextCards"
-    :imageCards="homepageData.reviewsData.reviewsImageCards"
-    :parallaxBackground="homepageData.reviewsData.parallaxBackground"
-    :parallaxForeground="homepageData.reviewsData.parallaxForeground"
-  />
-  <GallerySection id="gallery" v-bind="homepageData.galleryData" />
+  <div v-if="homepageData">
+    <MainNav />
+    <HeroSection
+      id="hero"
+      v-bind="homepageData.bannerData"
+      v-if="homepageData"
+    />
+    <SectionTwo
+      id="sectionTwo"
+      :cards="homepageData.sectionTwoCards"
+      :parallax="homepageData.sectionTwoParallax"
+    />
+    <ReviewsSection
+      id="reviews"
+      :textCards="homepageData.reviewsData.reviewsTextCards"
+      :imageCards="homepageData.reviewsData.reviewsImageCards"
+      :parallaxBackground="homepageData.reviewsData.parallaxBackground"
+      :parallaxForeground="homepageData.reviewsData.parallaxForeground"
+    />
+    <GallerySection id="gallery" v-bind="homepageData.galleryData" />
+  </div>
 </template>
 
 <script setup>
@@ -23,13 +29,16 @@ import SectionTwo from "@/components/sectionTwo/SectionTwo.vue";
 import ReviewsSection from "@/components/reviews/ReviewsSection.vue";
 import GallerySection from "@/components/gallery/GallerySection.vue";
 
-import { useRoute } from "vue-router";
-
+import { useRoute, useRouter } from "vue-router";
 import { useHomepageStore } from "@/stores/HomepageStore.js";
 
 const homepageStore = useHomepageStore();
 const route = useRoute();
-const homepageData = await homepageStore.makeRequest(route.query.preview);
+const router = useRouter();
+let homepageData = null;
+try {
+  homepageData = await homepageStore.getHomepageData(route.query.preview);
+} catch {
+  router.push("/bad-call");
+}
 </script>
-
-<style scoped lang="scss"></style>

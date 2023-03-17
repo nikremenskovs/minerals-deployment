@@ -15,6 +15,7 @@
       "
       :src="props.imgSrc"
       :alt="props.imgAlt"
+      ref="sectionTwoImage"
     />
   </picture>
 </template>

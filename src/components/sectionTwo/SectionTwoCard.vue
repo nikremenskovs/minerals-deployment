@@ -18,8 +18,8 @@
       ]"
     />
 
-    <div class="section-two-card__overlay" :class="`overlay--${props.index}`" />
-    <div class="text" :class="`text--${index}`">
+    <div class="section-two-card__overlay" ref="overlay" />
+    <div class="text" ref="text">
       <h2 :class="`text__heading`">{{ props.heading }}</h2>
       <p :class="`text__subheading`">{{ props.subheading }}</p>
       <img :class="`text__arrow`" src="@/assets/images/arrowRight.png" />
@@ -30,9 +30,12 @@
 <script setup>
 import { gsap } from "gsap";
 
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 
 let matchMedia = gsap.matchMedia();
+
+const text = ref();
+const overlay = ref();
 
 function sectionTwoLoad(index) {
   gsap.fromTo(
@@ -53,8 +56,8 @@ function sectionTwoLoad(index) {
 
 function hoverEnter(index) {
   matchMedia.add("(min-width: 768px)", () => {
-    gsap.to(`.text--${index}`, { y: "0", duration: 0.25 });
-    gsap.to(`.overlay--${index}`, { opacity: 0, duration: 1 });
+    gsap.to(text.value, { y: "0", duration: 0.25 });
+    gsap.to(overlay.value, { opacity: 0, duration: 1 });
     gsap.to(`.sectionTwoImage--${index}`, { scale: 1.2, duration: 2 });
   });
   matchMedia.add("(max-width: 767px)", () => {
@@ -65,8 +68,8 @@ function hoverEnter(index) {
 }
 function hoverLeave(index) {
   matchMedia.add("(min-width: 768px)", () => {
-    gsap.to(`.text--${index}`, { y: "150%", duration: 0.25 });
-    gsap.to(`.overlay--${index}`, {
+    gsap.to(text.value, { y: "150%", duration: 0.25 });
+    gsap.to(overlay.value, {
       opacity: 0.5,
       duration: 1,
     });
