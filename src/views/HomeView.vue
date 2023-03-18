@@ -1,5 +1,5 @@
 <template>
-  <main-nav />
+  <MainNav v-bind="homepageData.navigationData" />
   <HeroSection id="hero" v-bind="homepageData.bannerData" />
   <SectionTwo
     id="sectionTwo"
