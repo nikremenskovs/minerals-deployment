@@ -12,9 +12,9 @@
         </router-link>
       </li>
       <li class="main-nav__item">
-        <router-link class="main-nav__link" to="#sectionThree">
-          {{ props.headingThree }}
-        </router-link>
+
+        <router-link class="main-nav__link" to="#reviews">  {{ props.headingThree }} </router-link>
+
       </li>
       <li class="main-nav__item">
         <router-link class="main-nav__link" to="#gallery">
@@ -50,7 +50,7 @@ const textColor = computed(() => props.textColor);
 .main-nav {
   width: 100%;
   position: fixed;
-  z-index: 1;
+  z-index: 2;
   font-family: sans-serif;
   background-image: linear-gradient(
     180deg,

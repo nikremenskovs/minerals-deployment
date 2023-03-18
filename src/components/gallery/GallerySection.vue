@@ -7,6 +7,7 @@
     <GallerySectionControl
       :galleryHeading="props.galleryHeading"
       :gallerySubheading="props.gallerySubheading"
+      :galleryImages="props.galleryImages"
     />
   </section>
 </template>

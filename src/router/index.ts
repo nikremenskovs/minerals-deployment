@@ -20,6 +20,10 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
       component: () => import("../views/AboutView.vue"),
     },
+    {
+      path: "/bad-call",
+      component: () => import("@/components/shared/NotFound.vue"),
+    },
   ],
   scrollBehavior(to) {
     if (to.hash) {

@@ -25,19 +25,25 @@ import { gsap } from "gsap";
 const props = defineProps({
   galleryHeading: { type: String, required: true },
   gallerySubheading: { type: String, required: true },
+  galleryImages: { type: Array, required: true },
 });
-
+let matchMediaHoverClose = gsap.matchMedia();
 const galleryTimeline = gsap.timeline();
 const controlsTimeline = gsap.timeline();
 const backgroundTimeline = gsap.timeline();
 const hoverCloseTimeline = gsap.timeline();
 
 function viewGallery() {
-  for (let n = 0; n < 11; n++) {
+  props.galleryImages.forEach((image, i) => {
     galleryTimeline
-      .to(`.layout-grid__${n}`, { scale: 1, x: 0, y: 0, ease: "none" }, 0)
+      .to(
+        `.gallery-layout-grid__${i}`,
+        { scale: 1, x: 0, y: 0, ease: "none" },
+        0
+      )
       .play();
-  }
+  });
+
   backgroundTimeline
     .to(
       ".background-grid__quarter",
@@ -63,7 +69,12 @@ function hoverClose() {
 }
 
 onMounted(() => {
-  hoverCloseTimeline.to(".close-gallery--hover", { y: "-75%", duration: 0.25 });
+  matchMediaHoverClose.add("(min-width: 768px)", () => {
+    hoverCloseTimeline.to(".close-gallery--hover", {
+      y: "-75%",
+      duration: 0.25,
+    });
+  });
 });
 
 onUnmounted(() => {

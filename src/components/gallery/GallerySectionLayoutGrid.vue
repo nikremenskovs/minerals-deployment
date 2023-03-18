@@ -1,9 +1,9 @@
 <template>
-  <div class="layout-grid">
+  <div class="gallery-layout-grid">
     <ResponsiveImage
       v-for="(image, index) in props.galleryImages"
       :key="index"
-      :class="`layout-grid__${index}`"
+      :class="`gallery-layout-grid__${index}`"
       :imgSrc="image.image[0]"
       :imgAlt="image.altText"
       :sourcesMap="[
@@ -44,7 +44,7 @@ function opacityGallery() {
     }
   );
   props.galleryImages.forEach((image, index) => {
-    gsap.to(`.layout-grid__${index}`, {
+    gsap.to(`.gallery-layout-grid__${index}`, {
       scrollTrigger: {
         trigger: ".gallery",
         start: "top center",
@@ -70,7 +70,7 @@ onUnmounted(() => {
 <style scoped lang="scss">
 @import "@/styles/_mixins.scss";
 
-.layout-grid {
+.gallery-layout-grid {
   @include positioning(absolute, 100%, 100%);
   display: grid;
   top: 0;

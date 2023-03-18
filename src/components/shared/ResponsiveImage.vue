@@ -15,6 +15,7 @@
       "
       :src="props.imgSrc"
       :alt="props.imgAlt"
+      ref="sectionTwoImage"
     />
   </picture>
 </template>
@@ -30,6 +31,15 @@ const props = defineProps({
   sourcesMap: {
     type: Array,
     required: false,
+    validator: (propValue) => {
+      const valid = propValue.every((obj) => {
+        return (
+          Object.prototype.hasOwnProperty.call(obj, "assetWidth") &&
+          Object.prototype.hasOwnProperty.call(obj, "media")
+        );
+      });
+      return valid;
+    },
   },
 });
 </script>

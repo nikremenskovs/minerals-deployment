@@ -52,7 +52,7 @@ function dotAnimation() {
     { x: "37.5%" },
     {
       scrollTrigger: {
-        trigger: "#sectionThree",
+        trigger: "#reviews",
         start: "top 75%",
         end: "top top",
         scrub: 0.5,
