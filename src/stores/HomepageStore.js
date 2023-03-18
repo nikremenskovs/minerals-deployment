@@ -7,10 +7,21 @@ export const useHomepageStore = defineStore("HomepageStore", {
     sectionTwo: {},
     reviews: {},
     gallery: {},
+
+    navigation: {
+      textColor: "",
+      headingOne: "",
+      headingTwo: "",
+      headingThree: "",
+      headingFour: "",
+      pulseIcon: [],
+      pulseIconSize: null,
+    },
   }),
   actions: {
     async getHomepageData(urlPreview) {
       const response = await getHomepage(urlPreview);
+       const navigationData = response.data.data.navigation.en;
       const bannerData = response.data.data.banner.iv;
       const sectionTwoCards = response.data.data.sectionTwo.en.sectionTwoCards;
       const sectionTwoParallax =
@@ -18,6 +29,7 @@ export const useHomepageStore = defineStore("HomepageStore", {
       const reviewsData = response.data.data.reviews.iv;
       const galleryData = response.data.data.gallery.en;
 
+ this.navigation = navigationData;
       this.banner = bannerData;
       this.sectionTwo.cards = sectionTwoCards;
       this.sectionTwo.parallax = sectionTwoParallax;
@@ -25,6 +37,7 @@ export const useHomepageStore = defineStore("HomepageStore", {
       this.gallery = galleryData;
 
       return {
+      navigationData: this.navigation,
         bannerData: this.banner,
         sectionTwoCards: this.sectionTwo.cards,
         sectionTwoParallax: this.sectionTwo.parallax,

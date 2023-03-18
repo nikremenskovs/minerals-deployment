@@ -5,10 +5,18 @@
 </template>
 
 <script setup>
-import { onMounted, onUnmounted } from "vue";
+import { onMounted, onUnmounted, computed } from "vue";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
+
+const props = defineProps({
+  pulseIcon: { type: Array, required: true },
+  pulseIconSize: { type: Number, required: true },
+});
+
+const pulseIconImage = computed(() => `url(${props.pulseIcon})`);
+const pulseIconSize = computed(() => `${props.pulseIconSize}px`);
 
 function dotAnimation() {
   gsap.fromTo(
@@ -81,10 +89,12 @@ onUnmounted(() => {
 <style scoped lang="scss">
 .pulse-container__dot {
   transform: translateX(-50%);
-  width: 6px;
-  height: 6px;
+  width: v-bind(pulseIconSize);
+  height: v-bind(pulseIconSize);
   border-radius: 20px;
-  background-color: white;
+  background-image: v-bind(pulseIconImage);
+  background-size: cover;
+  background-repeat: no-repeat;
   margin-bottom: 0.5rem;
 }
 </style>

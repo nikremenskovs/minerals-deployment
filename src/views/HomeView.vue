@@ -1,10 +1,9 @@
 <template>
   <div v-if="homepageData">
-    <MainNav />
+    <MainNav v-bind="homepageData.navigationData" />
     <HeroSection
       id="hero"
       v-bind="homepageData.bannerData"
-      v-if="homepageData"
     />
     <SectionTwo
       id="sectionTwo"
