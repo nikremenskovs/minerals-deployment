@@ -20,8 +20,8 @@ jobs:
       
       - name: Commit changes
         run: |
-          git config --global user.name "Your Name"
-          git config --global user.email "your-email@domain.com"
+          git config --global user.name "nikremenskovs"
+          git config --global user.email "nikremenskovs@gmail.com"
           git add dist -f
           git commit -m "Deployed via GitHub Actions"
       
