@@ -20,7 +20,7 @@ const backgroundImg = computed(() => `url('${props.background.image})`);
 function backgroundAnimation() {
   gsap.fromTo(
     ".background",
-    { scale: 1.1 },
+    { scale: 1 },
     {
       scrollTrigger: {
         trigger: ".background",
