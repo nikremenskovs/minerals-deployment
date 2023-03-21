@@ -6,46 +6,28 @@ on:
       - main
 
 jobs:
-  build:
-    name: Build
+  build-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repo
+      - name: Checkout
         uses: actions/checkout@v2
-      
-      - name: Setup Node
-        uses: actions/setup-node@v1
-        with: 
-          node-version: 16
-      
-      - name: Install dependencies
-        uses: nikremenskovs/npm-install@v1
 
-      - name: Build project
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
         run: npm run build
 
-      - name: Upload production-ready build files
-        uses: actions/upload-artifact@v2
-        with:
-          name: production files
-          path: ./dist
-
-  deploy:
-    name: Deploy
-    needs: build
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
-
-    steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: production-files
-          path: ./dist
-
-      - name: Deploy to GitHUb Pages
+      - name: Commit changes
+        run: |
+          git config --global user.name "nikremenskovs"
+          git config --global user.email "nikremenskovs@gmail.com"
+          git add dist -f
+          git commit -m "Deployed via GitHub Actions"
+          git subtree push --prefix dist origin github-pages
+      
+      - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist 
+          publish_dir: ./dist
