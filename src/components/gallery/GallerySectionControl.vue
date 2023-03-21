@@ -53,10 +53,11 @@ function viewGallery() {
     .play();
   controlsTimeline
     .to(".view-gallery", { opacity: 0, display: "none", ease: "circ" }, 0)
-    .to(".close-gallery", { scale: 1, ease: "expo" })
-    .to(".close-gallery", { y: "35vh", delay: 0.25 })
+    .to(".close-gallery", { scale: 1, ease: "expo" }, 1)
+    .to(".close-gallery", { y: "35vh", delay: 0.25 }, 1)
     .play();
 }
+
 
 function closeGallery() {
   galleryTimeline.reverse();
