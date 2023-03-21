@@ -28,7 +28,7 @@ const props = defineProps({
 
 .gallery {
   @include positioning(relative, 100%, 100vh);
-  background: yellow;
+  background: black;
 }
 .background-grid {
   width: 100%;
