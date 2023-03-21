@@ -12,7 +12,7 @@ body {
 
 
 <style>
-html {
+/* html {
   overscroll-behavior: none;
-}
+} */
 </style>

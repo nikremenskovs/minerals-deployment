@@ -29,7 +29,7 @@ function cuesAnimation() {
         start: "bottom+=40% bottom",
         end: "bottom+=75% bottom",
         scrub: 0.5,
-        toggleActions: "restart none play reverse",
+        // toggleActions: "restart none play reverse",
       },
       opacity: 0,
     }
@@ -43,7 +43,7 @@ function cuesAnimation() {
         start: "bottom+=75% bottom",
         end: "bottom+=160% bottom",
         scrub: 0.5,
-        toggleActions: "restart none play reverse",
+        // toggleActions: "restart none play reverse",
       },
       y: "100%",
     }
