@@ -22,6 +22,6 @@ jobs:
     - run: git config --global user.email "nikremenskovs@gmail.com"
     - run: git config --global user.name "nikremenskovs"
     - run: git commit -m "Deployed via GitHub Actions"
-    - run: git config pull.rebase true   # rebase
+    - run: git config pull.ff only       # fast-forward only
     - run: git pull origin github-pages
     - run: git subtree push --prefix dist origin github-pages
