@@ -8,6 +8,11 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    
+    strategy: 
+      matrix: 
+        node-version: [16.x]
+    
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -20,5 +25,3 @@ jobs:
           git add dist -f
           git commit -m "Deployed via GitHub Actions"
           git subtree push --prefix dist origin github-pages
-    env:
-      node-version: '16'
