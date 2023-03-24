@@ -25,14 +25,18 @@ const router = createRouter({
       component: () => import("@/components/shared/NotFound.vue"),
     },
   ],
-  scrollBehavior(to) {
-    if (to.hash) {
-      gsap.to(window, {
-        duration: 4,
-        delay: 0.5,
-        scrollTo: to.hash,
-        ease: "power1",
-      });
+  scrollBehavior(to, from) {
+    switch(true) {
+      case (to.hash === '#hero' && from.fullPath === '/'):
+        break;
+        case Boolean(to.hash):
+        gsap.to(window, {
+          duration: 4,
+          delay: 0.5,
+          scrollTo: to.hash,
+          ease: "power1",
+        });
+        break;
     }
   },
 });

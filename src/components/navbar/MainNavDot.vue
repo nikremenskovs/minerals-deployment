@@ -28,7 +28,6 @@ function dotAnimation() {
         start: "top top",
         end: "bottom+=80% bottom",
         scrub: 0.5,
-        toggleActions: "restart none none reverse",
       },
       opacity: 1,
     }
@@ -42,7 +41,6 @@ function dotAnimation() {
         start: "top 75%",
         end: "top top",
         scrub: 0.5,
-        toggleActions: "restart none none reverse",
       },
       x: "37.5%",
     }
@@ -56,7 +54,6 @@ function dotAnimation() {
         start: "top 75%",
         end: "top top",
         scrub: 0.5,
-        toggleActions: "restart none none reverse",
       },
       x: "62.5%",
     }
@@ -70,7 +67,6 @@ function dotAnimation() {
         start: "top 75%",
         end: "top top",
         scrub: 0.5,
-        toggleActions: "restart none none reverse",
       },
       x: "87.5%",
     }

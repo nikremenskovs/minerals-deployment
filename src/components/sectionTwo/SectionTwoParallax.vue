@@ -3,18 +3,10 @@
     <h2 class="sectionTwoParallax-container__heading">
       {{ props.heading }}
     </h2>
-    <img
-      :src="props.centrepiece.image"
-      :alt="props.centrepiece.altText"
-      class="sectionTwoParallax-container__centrepiece"
-    />
-    <img
-      v-for="(satellite, index) in props.satellites"
-      :key="index"
-      :src="satellite.image"
-      :alt="satellite.altText"
-      :class="`sectionTwoParallax-container__satellite${index}`"
-    />
+    <img :src="props.centrepiece.image" :alt="props.centrepiece.altText"
+      class="sectionTwoParallax-container__centrepiece" />
+    <img v-for="(satellite, index) in props.satellites" :key="index" :src="satellite.image" :alt="satellite.altText"
+      :class="`sectionTwoParallax-container__satellite${index}`" />
   </div>
 </template>
 
@@ -40,7 +32,6 @@ function sectionTwoParallaxAnimation() {
         start: "top 90%",
         end: "top top",
         scrub: 0.5,
-        toggleActions: "restart none play reverse",
       },
       opacity: 1,
     }
@@ -54,7 +45,6 @@ function sectionTwoParallaxAnimation() {
         start: "top bottom",
         end: "bottom center",
         scrub: 0.5,
-        toggleActions: "restart none play reverse",
       },
       rotate: "0",
     }
@@ -68,7 +58,6 @@ function sectionTwoParallaxAnimation() {
         start: "top bottom",
         end: "bottom center",
         scrub: 0.5,
-        toggleActions: "restart none play reverse",
       },
       y: "-250%",
     }
@@ -82,7 +71,6 @@ function sectionTwoParallaxAnimation() {
         start: "top bottom",
         end: "bottom center",
         scrub: 0.5,
-        toggleActions: "restart none play reverse",
       },
       y: "0%",
       opacity: 0.2,
@@ -98,7 +86,6 @@ function sectionTwoParallaxAnimation() {
         start: "top 80%",
         end: "bottom center",
         scrub: 0.5,
-        toggleActions: "restart none play reverse",
       },
       y: "380%",
       rotate: "-180deg",
@@ -113,7 +100,6 @@ function sectionTwoParallaxAnimation() {
         start: "top center",
         end: "bottom center",
         scrub: 0.5,
-        toggleActions: "restart none play reverse",
       },
       y: "-200%",
       rotate: "360deg",
@@ -130,11 +116,13 @@ onUnmounted(() => {
 
 <style scoped lang="scss">
 @import "@/styles/_mixins.scss";
+
 .sectionTwoParallax-container {
   height: 70vh;
 
   position: relative;
   overflow: hidden;
+
   &__heading {
     color: white;
     font-family: sans-serif;
@@ -147,6 +135,7 @@ onUnmounted(() => {
     left: 50%;
     transform: translate(-50%, -50%);
   }
+
   &__centrepiece {
     position: absolute;
     opacity: 0.4;
@@ -155,18 +144,18 @@ onUnmounted(() => {
     width: 40%;
     max-width: 200px;
   }
+
   @for $n from 0 through 3 {
     &__satellite#{$n} {
-      @include sectionTwoSatelliteImage(
-        nth(map-get($sectionTwoSatelliteImageMap, satellite#{$n}), 1),
+      @include sectionTwoSatelliteImage(nth(map-get($sectionTwoSatelliteImageMap, satellite#{$n}), 1),
         nth(map-get($sectionTwoSatelliteImageMap, satellite#{$n}), 2),
         nth(map-get($sectionTwoSatelliteImageMap, satellite#{$n}), 3),
         nth(map-get($sectionTwoSatelliteImageMap, satellite#{$n}), 4),
-        nth(map-get($sectionTwoSatelliteImageMap, satellite#{$n}), 5)
-      );
+        nth(map-get($sectionTwoSatelliteImageMap, satellite#{$n}), 5));
     }
   }
 }
+
 @media (min-width: 768px) {
   .sectionTwoParallax-container {
     height: 100vh;

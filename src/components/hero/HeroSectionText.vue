@@ -35,7 +35,6 @@ function textAnimation() {
         end: "bottom+=40% bottom",
         scrub: 0.5,
         pinSpacing: false
-        // toggleActions: "restart none none reverse",
       },
       opacity: 0,
     }
@@ -51,7 +50,6 @@ function textAnimation() {
         end: "bottom+=80% bottom",
         scrub: 0.5,
         pinSpacing: false
-        // toggleActions: "restart none none reverse",
       },
       opacity: 1,
     }
@@ -66,7 +64,6 @@ function textAnimation() {
         end: "bottom+=160% bottom",
         scrub: 0.5,
         pinSpacing: false
-        // toggleActions: "restart none none reverse",
       },
       opacity: 0,
     }
@@ -83,7 +80,6 @@ function textAnimation() {
         end: "bottom+=80% bottom",
         scrub: 0.5,
         pinSpacing: false
-        // toggleActions: "restart none none reverse",
       },
       y: -20,
     }
