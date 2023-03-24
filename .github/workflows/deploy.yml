@@ -10,9 +10,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
@@ -22,6 +22,7 @@ jobs:
     - run: git config --global user.email "nikremenskovs@gmail.com"
     - run: git config --global user.name "nikremenskovs"
     - run: git commit -m "Deployed via GitHub Actions"
-    - run: git pull origin github-pages
+    - name: Reconcile divergent branches
+      run: git pull origin github-pages --rebase
     - run: git push origin github-pages
     - run: git subtree push --prefix dist origin github-pages
