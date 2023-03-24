@@ -22,4 +22,6 @@ jobs:
     - run: git config --global user.email "nikremenskovs@gmail.com"
     - run: git config --global user.name "nikremenskovs"
     - run: git commit -m "Deployed via GitHub Actions"
-    - run: git subtree push --prefix dist origin github-pages
+    - run: git subtree split --prefix _site -b github-pages 
+    - run: git push -f origin github-pages:github-pages 
+    - run: git branch -D github-pages 
