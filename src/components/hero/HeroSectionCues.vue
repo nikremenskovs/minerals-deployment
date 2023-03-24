@@ -1,9 +1,5 @@
 <template>
-  <img
-    class="cue__scroll"
-    :src="props.scrollCue.image"
-    :alt="props.scrollCue.altText"
-  />
+  <img class="cue__scroll" :src="props.scrollCue.image" :alt="props.scrollCue.altText" />
   <div class="cue__line">
     <div class="cue__line--scroll"></div>
   </div>
@@ -29,6 +25,7 @@ function cuesAnimation() {
         start: "bottom+=40% bottom",
         end: "bottom+=75% bottom",
         scrub: 0.5,
+        pinSpacing: false
         // toggleActions: "restart none play reverse",
       },
       opacity: 0,
@@ -43,6 +40,7 @@ function cuesAnimation() {
         start: "bottom+=75% bottom",
         end: "bottom+=160% bottom",
         scrub: 0.5,
+        pinSpacing: false
         // toggleActions: "restart none play reverse",
       },
       y: "100%",
@@ -67,6 +65,7 @@ onUnmounted(() => {
   bottom: 5%;
   transform: translateX(-50%);
 }
+
 .cue__line {
   height: 140px;
   position: absolute;
@@ -74,6 +73,7 @@ onUnmounted(() => {
   bottom: 5%;
   transform: translateX(-50%);
   overflow: hidden;
+
   &--scroll {
     height: 100%;
     width: 1px;

@@ -27,6 +27,7 @@ function backgroundAnimation() {
         start: "top top",
         end: "bottom+=100% bottom",
         scrub: 0.5,
+        pinSpacing: false
         // toggleActions: "restart none play reverse",
       },
       scale: 1.3,
@@ -41,6 +42,7 @@ function backgroundAnimation() {
         start: "top top",
         end: "bottom+=80% bottom",
         scrub: 0.5,
+        pinSpacing: false
         // toggleActions: "restart none none reverse",
       },
       scale: 2,
@@ -55,6 +57,7 @@ function backgroundAnimation() {
         start: "bottom+=100% bottom",
         end: "bottom+=160% bottom",
         scrub: true,
+        pinSpacing: false
         // toggleActions: "restart none none reverse",
       },
       y: -300,
@@ -69,6 +72,7 @@ function backgroundAnimation() {
           start: "bottom+=80% bottom",
           end: "bottom+=160% bottom",
           scrub: true,
+          pinSpacing: false
           // toggleActions: "restart none none reverse",
         },
         opacity: 1,

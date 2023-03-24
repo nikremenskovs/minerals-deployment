@@ -34,6 +34,7 @@ function textAnimation() {
         start: "top top",
         end: "bottom+=40% bottom",
         scrub: 0.5,
+        pinSpacing: false
         // toggleActions: "restart none none reverse",
       },
       opacity: 0,
@@ -49,6 +50,7 @@ function textAnimation() {
         start: "bottom+=40% bottom",
         end: "bottom+=80% bottom",
         scrub: 0.5,
+        pinSpacing: false
         // toggleActions: "restart none none reverse",
       },
       opacity: 1,
@@ -63,6 +65,7 @@ function textAnimation() {
         start: "bottom+=100% bottom",
         end: "bottom+=160% bottom",
         scrub: 0.5,
+        pinSpacing: false
         // toggleActions: "restart none none reverse",
       },
       opacity: 0,
@@ -79,6 +82,7 @@ function textAnimation() {
         start: "bottom+=40% bottom",
         end: "bottom+=80% bottom",
         scrub: 0.5,
+        pinSpacing: false
         // toggleActions: "restart none none reverse",
       },
       y: -20,
