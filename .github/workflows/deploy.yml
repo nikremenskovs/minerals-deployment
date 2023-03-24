@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - run: npm install
     - uses: actions/checkout@v2
       with:
         ref: 'refs/heads/github-pages'
@@ -18,7 +19,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm install
+    
     - run: npm run build
     - run: git add dist -f
     - run: git config --global user.email "nikremenskovs@gmail.com"
