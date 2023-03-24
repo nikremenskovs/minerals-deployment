@@ -24,7 +24,6 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm run build
-    - run: npm run build
     - run: git add dist -f
     - run: git commit -m "Deployed via GitHub Actions"
     - run: git subtree push --prefix dist origin github-pages
