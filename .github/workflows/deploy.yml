@@ -11,8 +11,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+      with:
+        ref: 'refs/heads/github-pages'
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
@@ -22,7 +24,5 @@ jobs:
     - run: git config --global user.email "nikremenskovs@gmail.com"
     - run: git config --global user.name "nikremenskovs"
     - run: git commit -m "Deployed via GitHub Actions"
-    - name: Reconcile divergent branches
-      run: git pull origin github-pages --rebase
-    - run: git push origin github-pages
-    - run: git subtree push --prefix dist origin github-pages
+    - run: git pull origin github-pages --rebase
+    - run: git push --force origin HEAD:github-pages
