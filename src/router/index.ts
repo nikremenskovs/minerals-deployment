@@ -43,10 +43,10 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   if (to.path !== from.path) {
-    location.reload();
+    router.go(0)
   } else {
-    next();
+    next()
   }
-});
+})
 
 export default router;
