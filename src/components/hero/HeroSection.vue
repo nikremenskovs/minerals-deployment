@@ -28,7 +28,9 @@ const props = defineProps({
 
 
 onMounted(() => {
-  console.log('Component mounted')
+  window.onbeforeunload = function () {
+    return null; // this is required in some browsers to trigger the reload
+  };
 })
 </script>
 
