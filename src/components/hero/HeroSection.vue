@@ -13,7 +13,6 @@
 import HeroSectionBackground from "./HeroSectionBackground.vue";
 import HeroSectionText from "./HeroSectionText.vue";
 import HeroSectionCues from "./HeroSectionCues.vue";
-import { ref, onMounted } from 'vue'
 
 const props = defineProps({
   foreground: { type: Object, required: true },
@@ -25,13 +24,6 @@ const props = defineProps({
   scrollCue: { type: Object, required: true },
 });
 
-
-
-onMounted(() => {
-  window.onbeforeunload = function () {
-    return null; // this is required in some browsers to trigger the reload
-  };
-})
 </script>
 
 <style scoped lang="scss">

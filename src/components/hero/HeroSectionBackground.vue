@@ -92,11 +92,13 @@ onUnmounted(() => {
   background-image: v-bind(backgroundImg);
   background-size: cover;
   background-position: center;
+  will-change: scale;
 }
 
 .overlay {
   @include positioning(absolute, 100%, 100vh);
   background-color: black;
+  will-change: opacity;
 }
 
 .foreground {
@@ -105,5 +107,6 @@ onUnmounted(() => {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  will-change: scale transform;
 }
 </style>
