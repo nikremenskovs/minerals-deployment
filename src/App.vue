@@ -9,10 +9,3 @@ body {
   margin: 0;
 }
 </style>
-
-
-<style>
-html {
-  overscroll-behavior: none;
-}
-</style>
