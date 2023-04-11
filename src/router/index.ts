@@ -41,14 +41,4 @@ const router = createRouter({
   },
 });
 
-router.beforeEach((to, from, next) => {
-  if (to.path === from.path && from.navigationType === 'pop') {
-    router.go(0)
-    console.log('hook')
-  } else {
-    next()
-  }
-})
-
-
 export default router;
