@@ -1,16 +1,9 @@
 <template>
   <section class="hero">
     <div class="hero--sticky">
-      <HeroSectionBackground
-        :foreground="props.foreground"
-        :background="props.background"
-      />
-      <HeroSectionText
-        :titleHeading="props.titleHeading"
-        :titleSubheading="props.titleSubheading"
-        :infoHeading="props.infoHeading"
-        :infoDescription="props.infoDescription"
-      />
+      <HeroSectionBackground :foreground="props.foreground" :background="props.background" />
+      <HeroSectionText :titleHeading="props.titleHeading" :titleSubheading="props.titleSubheading"
+        :infoHeading="props.infoHeading" :infoDescription="props.infoDescription" />
       <HeroSectionCues :scrollCue="props.scrollCue" />
     </div>
   </section>
@@ -20,6 +13,7 @@
 import HeroSectionBackground from "./HeroSectionBackground.vue";
 import HeroSectionText from "./HeroSectionText.vue";
 import HeroSectionCues from "./HeroSectionCues.vue";
+import { ref, onMounted } from 'vue'
 
 const props = defineProps({
   foreground: { type: Object, required: true },
@@ -30,6 +24,12 @@ const props = defineProps({
   infoDescription: { type: String, required: true },
   scrollCue: { type: Object, required: true },
 });
+
+
+
+onMounted(() => {
+  console.log('Component mounted')
+})
 </script>
 
 <style scoped lang="scss">
