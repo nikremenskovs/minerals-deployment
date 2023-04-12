@@ -18,9 +18,8 @@ const foregroundImg = computed(() => `url(${props.foreground.image})`);
 const backgroundImg = computed(() => `url('${props.background.image})`);
 
 function backgroundAnimation() {
-  gsap.fromTo(
+  gsap.to(
     ".background",
-    { scale: 1 },
     {
       scrollTrigger: {
         trigger: ".background",
@@ -32,9 +31,8 @@ function backgroundAnimation() {
       scale: 1.3,
     }
   );
-  gsap.fromTo(
+  gsap.to(
     ".foreground",
-    { scale: 1 },
     {
       scrollTrigger: {
         trigger: ".background",
@@ -46,9 +44,8 @@ function backgroundAnimation() {
       scale: 2,
     }
   );
-  gsap.fromTo(
+  gsap.to(
     ".foreground",
-    { y: 0 },
     {
       scrollTrigger: {
         trigger: ".background",
@@ -60,9 +57,8 @@ function backgroundAnimation() {
       y: -300,
     }
   ),
-    gsap.fromTo(
+    gsap.to(
       ".overlay",
-      { opacity: 0 },
       {
         scrollTrigger: {
           trigger: ".overlay",
@@ -92,13 +88,13 @@ onUnmounted(() => {
   background-image: v-bind(backgroundImg);
   background-size: cover;
   background-position: center;
-  will-change: scale;
+  transform: translateZ(0)
 }
 
 .overlay {
   @include positioning(absolute, 100%, 100vh);
   background-color: black;
-  will-change: opacity;
+  opacity: 0;
 }
 
 .foreground {
@@ -107,6 +103,6 @@ onUnmounted(() => {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  will-change: scale transform;
+  transform: translateZ(0)
 }
 </style>
