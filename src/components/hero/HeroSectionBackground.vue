@@ -88,7 +88,7 @@ onUnmounted(() => {
   background-image: v-bind(backgroundImg);
   background-size: cover;
   background-position: center;
-  transform: translateZ(0)
+  
 }
 
 .overlay {
@@ -103,6 +103,5 @@ onUnmounted(() => {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  transform: translateZ(0)
 }
 </style>
