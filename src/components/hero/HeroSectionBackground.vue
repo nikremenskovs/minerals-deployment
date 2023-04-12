@@ -1,6 +1,24 @@
 <template>
-  <div class="background" />
-  <div class="foreground" />
+  <ResponsiveImage 
+      class="background"
+      :imgSrc="props.background.image[0]"
+      :imgAlt="props.background.altText"
+      :sourcesMap="[
+        { assetWidth: 'max', media: '1440px' },
+        { assetWidth: '1440', media: '1024px' },
+        { assetWidth: '1024', media: '320px' },
+      ]"
+    />
+    <ResponsiveImage 
+      class="foreground"
+      :imgSrc="props.foreground.image[0]"
+      :imgAlt="props.foreground.altText"
+      :sourcesMap="[
+        { assetWidth: 'max', media: '1440px' },
+        { assetWidth: '1440', media: '1024px' },
+        { assetWidth: '1024', media: '320px' },
+      ]"
+    />
   <div class="overlay" />
 </template>
 
@@ -14,8 +32,6 @@ const props = defineProps({
   foreground: { type: Object, required: true },
   background: { type: Object, required: true },
 });
-const foregroundImg = computed(() => `url(${props.foreground.image})`);
-const backgroundImg = computed(() => `url('${props.background.image})`);
 
 function backgroundAnimation() {
   gsap.to(
@@ -85,9 +101,8 @@ onUnmounted(() => {
 
 .background {
   @include positioning(absolute, 100%, 100vh);
-  background-image: v-bind(backgroundImg);
-  background-size: cover;
-  background-position: center;
+  object-fit: cover;
+  object-position: center;
   
 }
 
@@ -99,9 +114,7 @@ onUnmounted(() => {
 
 .foreground {
   @include positioning(absolute, 100%, 120vh);
-  background-image: v-bind(foregroundImg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+  object-fit: cover;
+  object-position: center;
 }
 </style>
