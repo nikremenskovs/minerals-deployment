@@ -6,3 +6,9 @@
     <router-link to="/">Back to homepage</router-link>
   </section>
 </template>
+
+<style scoped>
+section {
+  color: red;
+}
+</style>
