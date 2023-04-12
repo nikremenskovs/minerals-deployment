@@ -1,6 +1,6 @@
 <template>
   <div class="pulse-container">
-    <div class="pulse-container__dot" />
+    <img :src="props.pulseIcon" class="pulse-container__dot">
   </div>
 </template>
 
@@ -15,7 +15,6 @@ const props = defineProps({
   pulseIconSize: { type: Number, required: true },
 });
 
-const pulseIconImage = computed(() => `url(${props.pulseIcon})`);
 const pulseIconSize = computed(() => `${props.pulseIconSize}px`);
 
 function dotAnimation() {
@@ -87,10 +86,6 @@ onUnmounted(() => {
   transform: translateX(-50%);
   width: v-bind(pulseIconSize);
   height: v-bind(pulseIconSize);
-  border-radius: 20px;
-  background-image: v-bind(pulseIconImage);
-  background-size: cover;
-  background-repeat: no-repeat;
   margin-bottom: 0.5rem;
 }
 </style>
