@@ -56,3 +56,12 @@ export async function getHomepage(urlPreview) {
   }
   return api.get("homepage/bc15e44e-994d-4965-930a-dfbcf5f230ac");
 }
+
+export async function getTab(urlPreview) {
+  if (urlPreview) {
+    return api.get("tab-data/6ebbb438-ff73-41e5-bffd-a7398a995613", {
+      headers: { "X-Unpublished": 1 },
+    });
+  }
+  return api.get("tab-data/6ebbb438-ff73-41e5-bffd-a7398a995613");
+}
