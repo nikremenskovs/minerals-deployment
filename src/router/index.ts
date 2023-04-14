@@ -25,7 +25,7 @@ const router = createRouter({
   ],
   scrollBehavior(to, from) {
     switch(true) {
-      case (to.hash === '#hero' && from.fullPath === '/'):
+      case (to.hash === '#hero' && (from.fullPath === '/' || from.hash === '#hero') ):
         break;
         case Boolean(to.hash):
         gsap.to(window, {
