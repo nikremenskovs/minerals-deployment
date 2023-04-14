@@ -1,0 +1,1 @@
+import{_ as e,u as t,o as _,c as o}from"./index-e6b4ebee.js";const s={__name:"AboutView",setup(a){return t("Minerals - About"),(c,u)=>(_(),o("h1",null,"About"))}},r=e(s,[["__scopeId","data-v-88363bd6"]]);export{r as default};
