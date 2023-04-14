@@ -9,12 +9,8 @@ export const useTabStore = defineStore("TabStore", {
     async getTabData(urlPreview) {
       const response = await getTab(urlPreview);
       const favicon = response.data.data.favicon.iv[0]
-    
       this.faviconUrl = favicon;
-
-      return {
-        faviconUrl: this.faviconUrl
-      };
+      return favicon;
     },
   },
 });
