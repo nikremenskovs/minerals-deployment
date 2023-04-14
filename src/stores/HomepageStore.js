@@ -3,6 +3,7 @@ import { getHomepage } from "@/services/squidexService.js";
 
 export const useHomepageStore = defineStore("HomepageStore", {
   state: () => ({
+    homepageTabTitle: "",
     banner: {},
     sectionTwo: {},
     reviews: {},
@@ -21,6 +22,7 @@ export const useHomepageStore = defineStore("HomepageStore", {
   actions: {
     async getHomepageData(urlPreview) {
       const response = await getHomepage(urlPreview);
+      const homepageTabTitle = response.data.data.homepageTabTitle.en
        const navigationData = response.data.data.navigation.en;
       const bannerData = response.data.data.banner.iv;
       const sectionTwoCards = response.data.data.sectionTwo.en.sectionTwoCards;
@@ -29,7 +31,8 @@ export const useHomepageStore = defineStore("HomepageStore", {
       const reviewsData = response.data.data.reviews.iv;
       const galleryData = response.data.data.gallery.en;
 
- this.navigation = navigationData;
+      this.homepageTabTitle = homepageTabTitle
+      this.navigation = navigationData;
       this.banner = bannerData;
       this.sectionTwo.cards = sectionTwoCards;
       this.sectionTwo.parallax = sectionTwoParallax;
@@ -37,7 +40,8 @@ export const useHomepageStore = defineStore("HomepageStore", {
       this.gallery = galleryData;
 
       return {
-      navigationData: this.navigation,
+        homepageTabTitle: this.homepageTabTitle,
+        navigationData: this.navigation,
         bannerData: this.banner,
         sectionTwoCards: this.sectionTwo.cards,
         sectionTwoParallax: this.sectionTwo.parallax,

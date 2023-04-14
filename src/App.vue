@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, computed } from "vue";
+import { onMounted } from "vue";
 import { useFavicon } from '@vueuse/core'
 import { useRoute, useRouter } from "vue-router";
 import { useTabStore } from "@/stores/TabStore.js";
@@ -9,15 +9,15 @@ const route = useRoute();
 const router = useRouter();
 
 onMounted(async () => {
-  let tabData = null;
+  let faviconUrl = null;
   try {
-    tabData = await tabStore.getTabData(route.query.preview);
-    const faviconUrl = computed(() => tabData.faviconUrl)
+    faviconUrl = await tabStore.getTabData(route.query.preview);
     useFavicon(faviconUrl, { rel: 'icon' })
   } catch {
     router.push("/bad-call");
   }
 });
+
 </script>
 
 <template>

@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import { gsap } from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+
 gsap.registerPlugin(ScrollToPlugin);
 
 const router = createRouter({
@@ -11,24 +12,15 @@ const router = createRouter({
       path: "/",
       name: "home",
       component: HomeView,
-      meta: {
-        title: 'Minerals - Home'
-      }
     },
     {
       path: "/about",
       name: "about",
       component: () => import("../views/AboutView.vue"),
-      meta: {
-        title: 'Minerals - About'
-      }
     },
     {
       path: "/bad-call",
       component: () => import("@/components/shared/NotFound.vue"),
-      meta: {
-        title: 'Minerals - 404'
-      }
     },
   ],
   scrollBehavior(to, from) {
@@ -46,10 +38,5 @@ const router = createRouter({
     }
   },
 });
-
-router.beforeEach((to, from, next) => {
-  document.title = `${to.meta.title}`;
-  next();
-})
 
 export default router;
